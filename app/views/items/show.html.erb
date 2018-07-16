@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card">
+  <div class="card-header text-center ">
+    Menu Item
+  </div>
+  <div class="card-body text-center">
+    <h5 class="card-title"> <%= @item.item_name %> </h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <%= link_to 'Edit', edit_item_path(@item), class:"btn btn-secondary", :style => "color: #f8f8f8;"  %>
+    <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
+  </div>
+  <div class="card-footer text-muted text-center">
+      Added <%= time_ago_in_words(@item.created_at) %> ago.
+  </div>
+  </div>
+</div>
