@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <h5> <%= @selected_item.item_name %></h5> -->
+
+
+<div class="card">
+  <div class="card-header text-center ">
+    Random Item
+  </div>
+  <div class="card-body text-center">
+    <h2 class="card-title"> <%= @selected_item.item_name %> </h2>
+    <p class="card-text"> <%= @selected_item.description%></p>
+    <%= link_to 'Show', item_path(@selected_item), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+
+  </div>
+  <div class="card-footer text-muted text-center">
+      Added <%= time_ago_in_words(@selected_item.created_at) %> ago.
+  </div>
+  </div>
+</div>

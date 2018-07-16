@@ -4,11 +4,17 @@
 
   <h1>Menu Items</h1>
   <br>
+
+  <div class="container">
+    <%= link_to 'Generate Random Item', selected_random_item_path, class:"btn btn-outline-primary" %>
+  </div>
+
   <hr>
 
   <div class="container">
-  <%= link_to 'New Item', new_item_path, class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
-</div>
+    <%= link_to 'New Item', new_item_path, class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
+  </div>
+
 <br>
 
   <div class="conatiner">

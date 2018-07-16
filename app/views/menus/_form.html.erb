@@ -11,12 +11,64 @@
     </div>
   <% end %>
 
+  <div class="card text-center py-5">
+
   <div class="field">
     <%= form.label :restaurant_id %> ID:
     <%= form.text_field :restaurant_id, id: :menu_restaurant_id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field">
+    <%= form.label :breakfast %>
+    <%= form.text_field :breakfast, id: :breakfast_menu %>
+    <%#= form.text_field :breakfast, id: :breakfast_menu, :value => "Breakfast Menu" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lunch %>
+    <%= form.text_field :lunch, id: :lunch_menu, :value => "Lunch Menu" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dinner %>
+    <%= form.text_field :dinner, id: :dinner_menu, :value => "Dinner Menu" %>
+  </div>
+
+  <div class="container">
+    <div class="container">
+      <div class="container">
+        <div class="container">
+          <div class="container">
+            <div class="container">
+              <div class="container">
+                <div class="container">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Menu</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Breakfast </option>
+                      <option> Lunch </option>
+                      <option> Dinner </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<br>
+  <div class="actions text-center">
+    <%= form.submit class:"btn btn-success", :style => "color: #f8f8f8;" %>
   </div>
 <% end %>
+
+</div>
+
+
+<div class="text-center py-5">
+<%= link_to 'Back', :back , class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+</div>
