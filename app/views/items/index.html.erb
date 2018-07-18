@@ -6,7 +6,7 @@
   <br>
 
   <div class="container">
-    <%= link_to 'Generate Random Item', selected_random_item_path, class:"btn btn-outline-primary" %>
+    <%= link_to 'Generate Random Item', selected_random_item_path, class:"btn btn-outline-primary" if @items.any? %>
   </div>
 
   <hr>
@@ -15,24 +15,40 @@
     <%= link_to 'New Item', new_item_path, class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
   </div>
 
-<br>
+  <br>
 
-  <div class="conatiner">
-  <% @items.each do |item| %>
-    <div class="card">
+    <div class="conatiner">
+    <% @items.each do |item| %>
+      <div class="card">
 
-      <br>
-      <div class="card-body text-center">
-        <h5 class="card-title"> <%= item.item_name %> </h5>
-        <p class="card-text"> <%= item.description %></p>
-        <p class="card-text"> $<%= item.price %>0</p>
-        <%= link_to 'Show', item_path(item), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+        <br>
+        <div class="card-body text-center">
+          <h5 class="card-title"> <%= item.item_name %> </h5>
+          <p class="card-text"> <%= item.description %></p>
+          <p class="card-text"> $<%= item.price %></p>
+          <%= link_to 'Show', item_path(item), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+        </div>
+        <div class="card-footer text-muted text-center">
+            Added <%= time_ago_in_words(item.created_at) %> ago.
+        </div>
+
+        <% end %>
       </div>
-      <div class="card-footer text-muted text-center">
-          Added <%= time_ago_in_words(item.created_at) %> ago.
-      </div>
-
-      <% end %>
     </div>
+  <hr>
+  <br>
+
+  <div class="text-center">
+    <!-- <%= will_paginate(@items) %> -->
+    <%= will_paginate @items, page_links: false %>
   </div>
+
+  <hr>
+
+
+  <br>
+  <div class="btn btn-primary">
+  <%= link_to 'Back', :back, class:"btn btn-outline-primary", :style => "color: #f8f8f8;"  %>
+  </div>
+
 </div>

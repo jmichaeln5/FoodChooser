@@ -1,0 +1,39 @@
+<!-- <h1>Users#index Page</h1> -->
+
+<h1>
+  Login and Registration
+</h1>
+
+<br>
+
+<h5> Login </h5>
+  <form action="/sessions" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+    <input type="email" name="login[email]" placeholder="Email">
+    <input type="password" name="login[password]" placeholder="Password">
+    <input type="submit" name="submit" class="submit">
+  </form>
+
+  <div class="errors">
+    <% if flash[:login_errors]%>
+    <% flash[:login_errors].each do |error| %>
+      <p>  <%= error %> </p>
+      <%= redirect_to pages_home_path %>
+      <% end %>
+    <% end %>
+
+  <br>
+
+  <h5> Registration </h5>
+    <form action="/users" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <!-- This input shows the auth token -->
+      <!-- <input type="shows auth token" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
+
+      <input type="name" name="users[name]" placeholder="Name">
+      <input type="email" name="user[email]" placeholder="Email">
+      <input type="password" name="user[password]" placeholder="password">
+      <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
+      <input type="submit" name="submit" class="submit">
+    </form>
