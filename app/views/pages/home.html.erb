@@ -1,4 +1,35 @@
+<% if flash[:login_errors]%>
+  <% flash[:login_errors].each do |error| %>
+    <p style="color:red;">  <%= error %> </p>
+  <% end %>
+<% end %>
+
 <h1>Home Page</h1>
 <br>
 <hr>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<h1>Welcome to the Home Page of FoodChooser </h1>
+
+<br>
+
+<a href="/login"> <h5> Login </h5> </a>
+  <form action="/sessions" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+    <input type="email" name="login[email]" placeholder="Email">
+    <input type="password" name="login[password]" placeholder="Password">
+    <input type="submit" name="submit" class="submit">
+  </form>
+
+<br>
+
+<a href="/users/new"> <h5> Sign Up </h5> </a>
+
+  <form action="/users" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="name" name="users[name]" placeholder="Name">
+    <input type="email" name="user[email]" placeholder="Email">
+    <input type="password" name="user[password]" placeholder="Password">
+    <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
+    <input type="submit" name="submit" class="submit">
+  </form>

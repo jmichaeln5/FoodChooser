@@ -1,0 +1,11 @@
+<!-- <h5> Registration Form </h5> -->
+<!-- app/views/users/_form.html.erb -->
+
+  <form action="/users" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="name" name="users[name]" placeholder="Name">
+    <input type="email" name="user[email]" placeholder="Email">
+    <input type="password" name="user[password]" placeholder="Password">
+    <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
+    <input type="submit" name="submit" class="submit">
+  </form>

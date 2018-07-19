@@ -1,22 +1,26 @@
 Rails.application.routes.draw do
 
-  root 'items#index'
+  root 'pages#home'
 
   get 'users/index'
-  post '/sessions' => 'sessions#create'
-  post '/users' => 'users#create'
-  get '/dashboard' => 'users#dashboard'
+  post 'sessions' => 'sessions#create'
+  get 'login' => 'sessions#new'
+
+  get 'logout' => 'sessions#destroy', :as => "logout"
+  # delete 'logout' => 'sessions#destroy'
+  # post 'users' => 'users#create'
+  get 'dashboard' => 'users#dashboard', :as => "dashboard"
   #
   # get 'pages/home'
 
   get 'pages/about'
-  get 'pages/home'
-  get 'selected/random_item'
+  # get '/pages/home', :as => "home"
+  get '/selected/random_item'
 
   resources :restaurants
   resources :menus
   resources :items
-
+  resources :users
 
 
   # Nested resources example begin
@@ -25,8 +29,7 @@ Rails.application.routes.draw do
   #   resources :items
   # end
 
-  # Nested resources example begin
-
+  # Nested resources example end
 
 
 
