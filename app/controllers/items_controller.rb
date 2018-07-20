@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     # @items = Item.all.order("created_at DESC").limit(2)
     @items = Item.paginate(page: params[:page]).order("created_at DESC")
+    # Paginate pages control within model
   end
 
   # GET /items/1
@@ -29,7 +30,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }

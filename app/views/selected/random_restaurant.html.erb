@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center"> Random Restaurant </h1>
+<div class="card">
+  <div class="card-header text-center ">
+    You Got
+  </div>
+  <div class="card-body text-center">
+    <h2 class="card-title"> <%= @selected_restaurant.title %> </h2>
+    <%= link_to 'Show', restaurant_path(@selected_restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+
+  </div>
+  <div class="card-footer text-muted text-center">
+      Added <%= time_ago_in_words(@selected_restaurant.created_at) %> ago.
+  </div>
+  </div>
+</div>

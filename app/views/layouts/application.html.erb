@@ -16,7 +16,6 @@
   </head>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
     <a class="navbar-brand" href="/"> FoodChooser </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,30 +23,26 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-
         <% if current_user %>
 
         <li class="nav-item">
           <a class="nav-link" href="/dashboard"> My Profile </a>
         </li>
-
-
         <li class="nav-item active">
           <a class="nav-link" href="/dashboard"> Welcome<%= current_user.email %> </a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="/start">Start <span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/restaurants">Restaurants <span class="sr-only">(current)</span></a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="/menus">Menu</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="/items">Items</a>
         </li>
-
           <li class="nav-item">
              <!-- <%= link_to ' Log out', logout_path %> -->
              <a class="nav-link" href="/logout"> Logout </a>
@@ -58,63 +53,35 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="/pages/about">About</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="/start">Start <span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/restaurants">Restaurants <span class="sr-only">(current)</span></a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="/menus">Menu</a>
+            <a class="nav-link" href="/menus">Menus</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="/items">Items</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="/users/index">Login/Register</a>
           </li>
 
         <% end %>
-
       </ul>
-
     </div>
   </nav>
 
   <body>
 
     <div class="container py-5">
-
-      <div class="errors">
-        <% if flash[:login_errors]%>
-          <% flash[:login_errors].each do |error| %>
-            <p style="color:red;">  <%= error %> </p>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="errors">
-        <% if flash[:register_errors]%>
-          <% flash[:register_errors].each do |error| %>
-            <p style="color:red;">  <%= error %> </p>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="errors">
-        <% if flash[:notice]%>
-          <% flash[:notice].each do |notice| %>
-            <p style="color:red;">  <%= notice %> </p>
-          <% end %>
-        <% end %>
-      </div>
-
       <%= yield %>
     </div>
+
   </body>
 </html>

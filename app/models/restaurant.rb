@@ -1,3 +1,3 @@
 class Restaurant < ApplicationRecord
-  has_many :menus, dependent: :destroy
+    self.per_page = 3
 end

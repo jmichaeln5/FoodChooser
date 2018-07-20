@@ -1,8 +1,26 @@
-<% if flash[:login_errors]%>
-  <% flash[:login_errors].each do |error| %>
-    <p style="color:red;">  <%= error %> </p>
+<div class="errors">
+  <% if flash[:login_errors]%>
+    <% flash[:login_errors].each do |error| %>
+      <p style="color:red;">  <%= error %> </p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<div class="errors">
+  <% if flash[:register_errors]%>
+    <% flash[:register_errors].each do |error| %>
+      <p style="color:red;">  <%= error %> </p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <% if flash[:notice]%>
+    <% flash[:notice].each do |notice| %>
+      <p style="color:red;">  <%= notice %> </p>
+    <% end %>
+  <% end %>
+</div>
 
 <h1>Home Page</h1>
 <br>
@@ -13,7 +31,7 @@
 
 <br>
 
-<a href="/login"> <h5> Login </h5> </a>
+<h5> Login </h5>
   <form action="/sessions" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
     <input type="email" name="login[email]" placeholder="Email">
@@ -23,11 +41,11 @@
 
 <br>
 
-<a href="/users/new"> <h5> Sign Up </h5> </a>
-
+<h5> Sign Up </h5>
   <form action="/users" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="name" name="users[name]" placeholder="Name">
+    <input type="first_name" name="users[first_name]" placeholder="First Name">
+    <input type="last_name" name="users[last_name]" placeholder="Last Name">
     <input type="email" name="user[email]" placeholder="Email">
     <input type="password" name="user[password]" placeholder="Password">
     <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">

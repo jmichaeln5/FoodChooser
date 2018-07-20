@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
   # belongs_to :menu
-  self.per_page = 5
+  self.per_page = 3
 end

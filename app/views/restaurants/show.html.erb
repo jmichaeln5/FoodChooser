@@ -2,10 +2,8 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @restaurant.Title %>
+  <%= @restaurant.title %>
 </p>
-
-<%= render '/menus/form' %>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

@@ -4,7 +4,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.paginate(page: params[:page]).order("created_at DESC")
+    # Paginate pages control within model
   end
 
   # GET /restaurants/1
@@ -28,7 +29,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to new_menu_path, notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:Title)
+      params.require(:restaurant).permit(:title)
     end
 end

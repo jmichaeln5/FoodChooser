@@ -2,4 +2,17 @@
 
 <h5> Welcome <%= current_user.email %> </h5>
 
+<br>
+<br>
+<%= link_to "Restaurants", restaurants_path %>
+<br>
+<%= link_to "Generate Random Restaurants", selected_random_restaurant_path %>
+<br>
+<hr>
+<%= link_to "Items", items_path %>
+<br>
+<%= link_to "Generate Random Items", selected_random_item_path %>
+
+<br>
+<hr>
 <%= link_to "Edit Profile", edit_user_path(current_user) %>

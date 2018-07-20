@@ -1,0 +1,94 @@
+<h1>Start#Index</h1>
+
+<%#= render "restaurants/form"  %>
+
+<%#= render "menus/form"  %>
+
+
+<!-- Only submits Menu !!!!!! -->
+<!-- Only submits Menu !!!!!! -->
+<!-- Only submits Menu !!!!!! -->
+<!-- Only submits Menu !!!!!! -->
+
+<%= form_with(model: @restaurant, local: true) do |form| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this @restaurant from being saved:</h2>
+
+      <ul>
+      <% @restaurant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Restaurant" %>
+    <%= form.text_field :title, id: :restaurant_title %>
+  </div>
+
+<%= form_with(model: @menu, local: true) do |form| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this @menu from being saved:</h2>
+
+      <ul>
+      <% menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Menu Title" %>
+    <%= form.text_field :title, id: :menu_title %>
+  </div>
+
+
+
+<%= form_with(model: @item, local: true) do |form| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this @item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= form.label :item_name %>
+      <%= form.text_field :item_name, id: :item_item_name %>
+    </div>
+    <hr>
+
+    <div class="field">
+      <%= form.label :price, "Item Price" %>
+      <%= form.text_field :price, id: :item_price %>
+    </div>
+    <hr>
+
+    <div class="field">
+      <%= form.label :description, "Item Description" %>
+      <%= form.text_area :description, id: :item_description %>
+    </div>
+    <hr>
+    <br>
+
+    <div class="actions">
+      <%= form.submit "Submit",  class: 'btn btn-block btn-success' %>
+    </div>
+  <% end %>
+  <% end %>
+  <% end %>
+
+  <br>
+  <br>
+<%= link_to 'Back', items_path, class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+
+</div>
