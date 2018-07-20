@@ -1,5 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+<% if 1 >= @restaurants.count  %>
+<div class="card text-center py-5">
+  <a href="/restaurants/new">
+    <h5>
+      <font color="red">
+              Please Add At Least 2 Restaurants So We Can Generate a Random Restaurant.
+      </font>
+    </h5>
+  </a>
+</div>
+
+<% else %>
+
 <h1 class="text-center"> Random Restaurant </h1>
 <div class="card">
   <div class="card-header text-center ">
@@ -15,3 +28,5 @@
   </div>
   </div>
 </div>
+
+<% end %>
