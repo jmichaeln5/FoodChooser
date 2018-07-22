@@ -15,6 +15,7 @@ class MenusController < ApplicationController
   # GET /menus/new
   def new
     @menu = Menu.new
+    @restaurant = Restaurant.last.id
   end
 
   # GET /menus/1/edit
@@ -69,6 +70,6 @@ class MenusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:title)
+      params.require(:menu).permit(:title, :restaurant_id)
     end
 end

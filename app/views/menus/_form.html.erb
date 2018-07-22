@@ -12,6 +12,12 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :restaurant_id %>
+  <%= form.text_field :restaurant_id, id: :restaurant_id, value: @restaurant.id %>
+  </div>
+
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :menu_title %>
   </div>

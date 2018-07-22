@@ -1,3 +1,5 @@
 class Restaurant < ApplicationRecord
-    self.per_page = 3
+  belongs_to :user
+
+  self.per_page = 3
 end

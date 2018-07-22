@@ -3,7 +3,6 @@
 <h1> Login and Registration </h1>
 
 <br>
-
 <h5> Login </h5>
   <form action="/sessions" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
@@ -12,19 +11,15 @@
     <input type="submit" name="submit" class="submit">
   </form>
 
-  <br>
+<br>
 
-  <h5> Registration </h5>
-
-    <form action="/users" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-      <!-- This input shows the auth token -->
-      <!-- <input type="shows auth token" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
-
-      <input type="name" name="users[name]" placeholder="Name">
-      <input type="email" name="user[email]" placeholder="Email">
-      <input type="password" name="user[password]" placeholder="Password">
-      <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
-      <input type="submit" name="submit" class="submit">
-    </form>
+<h5> Sign Up </h5>
+  <form action="/users" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="first_name" name="users[first_name]" placeholder="First Name">
+    <input type="last_name" name="users[last_name]" placeholder="Last Name">
+    <input type="email" name="user[email]" placeholder="Email">
+    <input type="password" name="user[password]" placeholder="Password">
+    <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
+    <input type="submit" name="submit" class="submit">
+  </form>

@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <% if 1 >= @restaurants.count  %>
+
 <div class="card text-center py-5">
   <a href="/restaurants/new">
     <h5>
       <font color="red">
-              Please Add At Least 2 Restaurants So We Can Generate a Random Restaurant.
+              You Need to Add At Least 2 Restaurants to Generate a Random Restaurant.
       </font>
     </h5>
   </a>
@@ -21,7 +22,6 @@
   <div class="card-body text-center">
     <h2 class="card-title"> <%= @selected_restaurant.title %> </h2>
     <%= link_to 'Show', restaurant_path(@selected_restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
-
   </div>
   <div class="card-footer text-muted text-center">
       Added <%= time_ago_in_words(@selected_restaurant.created_at) %> ago.

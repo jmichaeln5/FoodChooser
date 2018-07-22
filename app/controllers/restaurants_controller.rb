@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
+    @user = current_user
     @restaurants = Restaurant.paginate(page: params[:page]).order("created_at DESC")
     # Paginate pages control within model
   end
@@ -16,15 +17,18 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/new
   def new
     @restaurant = Restaurant.new
+    @user = current_user
   end
 
   # GET /restaurants/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /restaurants
   # POST /restaurants.json
   def create
+    @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
@@ -70,6 +74,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:title)
+      params.require(:restaurant).permit(:title, :user_id)
     end
 end

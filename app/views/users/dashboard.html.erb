@@ -1,6 +1,60 @@
 <h1>User's Dashboard</h1>
 
-<h5> Welcome <%= current_user.email %> </h5>
+<h5> Welcome <%= @user.email %> </h5>
+
+<!-- <%#= if @restaurants < 1 %> -->
+<br>
+<hr>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.title %></td>
+        <td><%= link_to 'Show', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.title %></td>
+        <td><%= link_to 'Show', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<!-- <%# else %> -->
+
+<!-- <div class="card text-center py-5">
+  <a href="/restaurants/new">
+      <h5>
+        <font color="red">
+                You have no Restaurants.
+        </font>
+      </h5>
+  </a>
+</div> -->
+
+
+<!-- <%# end %> -->
+
+
+<br>
+<hr>
 
 <br>
 <br>

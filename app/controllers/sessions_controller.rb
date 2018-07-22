@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       redirect_to '/dashboard'
     else
       flash[:login_errors] = ['LOGIN ERROR. Invalid credentials, please try again.']
-      redirect_to users_index_path
+      # redirect_to users_index_path
+      redirect_to root_path
     end
   end
 

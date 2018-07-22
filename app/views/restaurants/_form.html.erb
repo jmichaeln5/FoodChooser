@@ -12,6 +12,19 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :user_id, value: @user.id %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :user %>
+    <%#= form. :user_id, id: :user_id %>
+  </div>
+
+ <%#= form.text_field :user, id: :user_id, value: @user.id %>
+
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :restaurant_title %>
   </div>
