@@ -1,35 +1,45 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
-  # GET /menus
-  # GET /menus.json
   def index
-    @menus = Menu.all
+    @user = current_user
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurants = Restaurant.where(user_id: @user)
+    @menus = Menu.where(restaurant_id: @restaurant).order("created_at DESC")
   end
 
-  # GET /menus/1
-  # GET /menus/1.json
   def show
+    @user = current_user
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @menu = Menu.find(params[:id])
+
+    # @restaurants = Restaurant.where(user_id: @user).paginate(page: params[:page]).order("created_at DESC")
   end
 
-  # GET /menus/new
   def new
-    @menu = Menu.new
-    @restaurant = Restaurant.last.id
+    @user = current_user
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @menu = @restaurant.menus.build
   end
 
-  # GET /menus/1/edit
   def edit
+    @user = current_user
+    @menu = Menu.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   # POST /menus
   # POST /menus.json
   def create
-    @menu = Menu.new(menu_params)
+    @user = current_user
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @menu = @restaurant.menus.build(menu_params)
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to new_item_path, notice: 'Menu was successfully created.' }
+
+        format.html { redirect_to restaurant_menus_path(@restaurant), notice: 'Menu was successfully created.' }
+        # format.html { redirect_to new_item_path, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
@@ -38,8 +48,6 @@ class MenusController < ApplicationController
     end
   end
 
-  # PATCH/PUT /menus/1
-  # PATCH/PUT /menus/1.json
   def update
     respond_to do |format|
       if @menu.update(menu_params)
@@ -52,8 +60,6 @@ class MenusController < ApplicationController
     end
   end
 
-  # DELETE /menus/1
-  # DELETE /menus/1.json
   def destroy
     @menu.destroy
     respond_to do |format|
@@ -63,13 +69,11 @@ class MenusController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_menu
       @menu = Menu.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:title, :restaurant_id)
+      params.require(:menu).permit(:title, :user_id, :restaurant_id)
     end
 end

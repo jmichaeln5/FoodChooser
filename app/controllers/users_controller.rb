@@ -2,9 +2,15 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+
+    @restaurants = Restaurant.where(user_id: @user).order("created_at DESC")
+
     #
-    @restaurants = current_user.restaurants
+    # @restaurants = current_user.restaurants
     #
+  end
+
+  def show
   end
 
   def new
@@ -41,7 +47,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
     session[:user_id] = nil
-    redirect_to root_path, :notice => ['You have deleted your profile.']
+    redirect_to root_path, :notice => 'You have deleted your profile.'
    else
      redirect_to users_edit_path, :notice => ["User can not be deleted at this time."]
    end

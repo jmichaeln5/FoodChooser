@@ -1,25 +1,27 @@
+<p id="notice"><%= notice %></p>
+
 <div class="errors">
-  <% if flash[:login_errors]%>
-    <% flash[:login_errors].each do |error| %>
-      <p style="color:red;">  <%= error %> </p>
-    <% end %>
-  <% end %>
+  <%# if flash[:login_errors]%>
+    <%# flash[:login_errors].each do |error| %>
+      <p style="color:red;">  <%#= error %> </p>
+    <%# end %>
+  <%# end %>
 </div>
 
 <div class="errors">
-  <% if flash[:register_errors]%>
-    <% flash[:register_errors].each do |error| %>
-      <p style="color:red;">  <%= error %> </p>
-    <% end %>
-  <% end %>
+  <%# if flash[:register_errors]%>
+    <%# flash[:register_errors].each do |error| %>
+      <p style="color:red;">  <%#= error %> </p>
+    <%# end %>
+  <%# end %>
 </div>
 
 <div class="errors">
-  <% if flash[:notice]%>
-    <% flash[:notice].each do |notice| %>
-      <p style="color:red;">  <%= notice %> </p>
-    <% end %>
-  <% end %>
+  <%# if flash[:notice]%>
+    <%# flash[:notice].each do |notice| %>
+      <p style="color:red;">  <%#= notice %> </p>
+    <%# end %>
+  <%# end %>
 </div>
 
 <h1>Home Page</h1>
@@ -44,10 +46,15 @@
 <h5> Sign Up </h5>
   <form action="/users" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="first_name" name="users[first_name]" placeholder="First Name">
-    <input type="last_name" name="users[last_name]" placeholder="Last Name">
-    <input type="email" name="user[email]" placeholder="Email">
-    <input type="password" name="user[password]" placeholder="Password">
-    <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
+    <!-- <input type="first_name" name="users[first_name]" placeholder="First Name"> -->
+    <input type="first_name" name="users[first_name]" value="User_1_First_Name">
+    <!-- <input type="last_name" name="users[last_name]" placeholder="Last Name"> -->
+    <input type="last_name" name="users[last_name]" value="User_1_Last_Name">
+    <!-- <input type="email" name="user[email]" placeholder="Email"> -->
+    <input type="email" name="user[email]" value="user1@gmail.com">
+    <!-- <input type="password" name="user[password]" placeholder="Password"> -->
+    <input type="password" name="user[password]" value="123456">
+    <!-- <input type="password" name="user[password_confimation]" placeholder="Password Confirmation"> -->
+    <input type="password" name="user[password_confimation]" value="123456">
     <input type="submit" name="submit" class="submit">
   </form>

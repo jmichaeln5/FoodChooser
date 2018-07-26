@@ -1,4 +1,7 @@
 <%= form_with(model: @restaurant, local: true) do |form| %>
+<%#= form_with(model: [ @user, @user.restaurants.build ]) do |form| %>
+
+
   <% if @restaurant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this @restaurant from being saved:</h2>
@@ -12,17 +15,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :user_id, value: @user.id %>
+    <%#= form.label :user_id %>
+    <%#= form.text_field :user_id, id: :user_id, value: @user.id %>
   </div>
 
-  <div class="field">
-    <%#= form.label :user %>
-    <%#= form. :user_id, id: :user_id %>
+  <div>
+    <%= "User ID" %>
+    <br>
+    <%= current_user.id %>
+    <br>
+    <% form.label :user_id %>
+    <% form.text_area :user_id, id: :current_user_id %>
   </div>
-
- <%#= form.text_field :user, id: :user_id, value: @user.id %>
-
 
   <div class="field">
     <%= form.label :title %>

@@ -3,15 +3,16 @@
 <div class="card py-5 text-center">
 
   <h1>Restaurants</h1>
+
   <br>
 
   <div class="container">
 
     <% if @restaurants.count == 0 %>
     <div class="card text-center py-5">
-      <a href="/restaurants/new">
-          <h5> Please Add At Least 2 Items So We Can Generate a Random Item. </h5>
-      </a>
+      <h5>
+        <%= link_to "Please Add At Least 2 Items So We Can Generate a Random Item.", new_user_restaurant_path(@user) %>
+      </h5>
     </div>
 
   <% elsif @restaurants.count <= 1  %>
@@ -29,7 +30,10 @@
   <hr>
 
   <div class="container">
-    <%= link_to 'New Restaurant', new_restaurant_path, class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
+    <%= link_to 'New Restaurant', new_user_restaurant_path(@user), class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
+
+
+    <!-- user_restaurant_path(restaurant, @user) -->
   </div>
 
   <br>
@@ -41,7 +45,12 @@
         <br>
         <div class="card-body text-center">
           <h5 class="card-title"> <%= restaurant.title %> </h5>
-          <%= link_to 'Show', restaurant_path(restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+
+          <%#= link_to 'Show', user_restaurant_path(restaurant, @user), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+
+          <%= link_to 'Show', user_restaurant_path(@user, restaurant ), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+
+
         </div>
         <div class="card-footer text-muted text-center">
             Added <%= time_ago_in_words(restaurant.created_at) %> ago.
@@ -62,7 +71,7 @@
 
 
   <br>
-  <div class="">
+  <div>
   <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
   </div>
 

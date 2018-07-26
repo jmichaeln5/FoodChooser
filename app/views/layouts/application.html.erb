@@ -36,15 +36,23 @@
         <li class="nav-item active">
           <a class="nav-link" href="/dashboard"> Welcome<%= current_user.email %> </a>
         </li>
+
         <!-- <li class="nav-item">
           <a class="nav-link" href="/start">Start <span class="sr-only">(current)</span></a>
         </li> -->
-        <li class="nav-item">
-          <a class="nav-link" href="/restaurants">Restaurants <span class="sr-only">(current)</span></a>
+
+        <li class="nav-item nav-link">
+          <%= link_to 'My Restaurants', user_restaurants_path(current_user) %>
         </li>
+
+        <!-- <li class="nav-item">
+          <%#= link_to 'My Menus', restaurant_menus_path(current_user) %>
+        </li> -->
+
         <li class="nav-item">
-          <a class="nav-link" href="/menus">Menu</a>
+          <%#= link_to 'Menus', user_restaurants_path %>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/items">Items</a>
         </li>
@@ -64,18 +72,22 @@
           <!-- <li class="nav-item">
             <a class="nav-link" href="/start">Start <span class="sr-only">(current)</span></a>
           </li> -->
-          <li class="nav-item">
+
+
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/restaurants">Restaurants <span class="sr-only">(current)</span></a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/menus">Menus</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/items">Items</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="/users/index">Login/Register</a>
           </li>
+
 
         <% end %>
       </ul>

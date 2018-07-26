@@ -2,9 +2,15 @@
 
 <h5> Welcome <%= @user.email %> </h5>
 
-<!-- <%#= if @restaurants < 1 %> -->
+<%#= render template:'restuarants/index' %>
+
 <br>
 <hr>
+
+<%= link_to 'Add New Restaurant', new_user_restaurant_path(@user), class:"btn btn-success", :style => "color: #f8f8f8;" %>
+<br>
+<hr>
+
 <table>
   <thead>
     <tr>
@@ -17,48 +23,21 @@
     <% @restaurants.each do |restaurant| %>
       <tr>
         <td><%= restaurant.title %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-
-  <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.title %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show',  user_restaurant_path( @user, restaurant) %></td>
+        <td><%= link_to 'Edit', edit_user_restaurant_path( @user, restaurant) %></td>
+        <td><%= link_to 'Destroy', user_restaurant_path( @user, restaurant ), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 
 </table>
 
-<!-- <%# else %> -->
-
-<!-- <div class="card text-center py-5">
-  <a href="/restaurants/new">
-      <h5>
-        <font color="red">
-                You have no Restaurants.
-        </font>
-      </h5>
-  </a>
-</div> -->
-
-
-<!-- <%# end %> -->
-
-
 <br>
 <hr>
 
 <br>
 <br>
-<%= link_to "Restaurants", restaurants_path %>
+<%= link_to "Restaurants", user_restaurants_path(@user) %>
 <br>
 <%= link_to "Generate Random Restaurants", selected_random_restaurant_path %>
 <br>

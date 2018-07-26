@@ -5,5 +5,19 @@
   <%= @menu.title %>
 </p>
 
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<%= link_to 'Edit', edit_restaurant_menu_path(@restaurant, @menu) %> |
+<td><%#= link_to 'Show', edit_restaurant_menu_path(@restaurant, @menu) %></td>
+
+
+
+<!--                         ******** Broken (from Restaurnts#show) ***********
+                             ******** Broken (from Restaurnts#show) ***********
+
+<%#= link_to 'Edit', edit_restaurant_menu_path(@restaurant, menu) %>
+
+                             ******** Broken (from Restaurnts#show) ***********
+                            ******** Broken (from Restaurnts#show) ***********
+ -->
+
+
+<%= link_to 'Back', :back %>
