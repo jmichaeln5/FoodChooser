@@ -3,26 +3,21 @@ class RestaurantsController < ApplicationController
 
   def index
     @user = current_user
-    @restaurants = Restaurant.where(user_id: @user).paginate(page: params[:page]).order("created_at DESC")
+
+    @restaurants = Restaurant.where(user_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
     #### Pagination found in model.rb file(control amount of @instances per page)
   end
 
   def show
     @user = current_user
     @restaurant = Restaurant.find(params[:id])
-    # @restaurant = Restaurant.where(params[:restaurant_params])
-    @restaurants = @user.restaurants
-    # @menu = Menu.find(params[:menu_id])
-
-    if Menu.any?
-      @menus = Menu.where(restaurant_id: @restaurant)
-      # @menus = Menu.where(restaurant_id: @restaurant).order("created_at DESC")
-    end
+    @menus = Menu.where(restaurant_id: @restaurant )
 
   end
 
   def new
     @user = current_user
+    # @user = User.find(params[:id])
     @restaurant = @user.restaurants.build
   end
 
@@ -31,13 +26,15 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    # @restaurant = @restaurant.build(restaurant_params)
+    # @restaurant = current_user.restaurants.build
     @user = current_user
-    @restaurant = @user.restaurants.build(restaurant_params)
+    @restaurant = Restaurant.new(restaurant_params)
 
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to new_restaurant_menu_path(@restaurant), notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to restaurants_path(@restaurant), notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new }

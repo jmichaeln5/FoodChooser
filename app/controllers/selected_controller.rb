@@ -10,6 +10,10 @@ class SelectedController < ApplicationController
   def random_restaurant
     @restaurants = Restaurant.all
     @selected_restaurant = Restaurant.all.shuffle.first
+
+    # @restaurants = Restaurant.where(user_id: @user)
+    # @selected_restaurant = @restaurants.all.shuffle.first
+
   end
 
 end

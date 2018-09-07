@@ -10,7 +10,7 @@ class MenusController < ApplicationController
 
   def show
     @user = current_user
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Menu.where(restaurant_id: @restaurant).order("created_at DESC")
     @menu = Menu.find(params[:id])
 
     # @restaurants = Restaurant.where(user_id: @user).paginate(page: params[:page]).order("created_at DESC")
@@ -25,22 +25,30 @@ class MenusController < ApplicationController
   def edit
     @user = current_user
     @menu = Menu.find(params[:id])
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Menu.where(restaurant_id: @restaurant)
+    # @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   # POST /menus
   # POST /menus.json
   def create
     @user = current_user
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @menu = @restaurant.menus.build(menu_params)
+    @restaurant = Menu.where(restaurant_id: @restaurant)
+    # @menu = @restaurant.menus.build(menu_params)
+    @menu = Menu.new(menu_params)
 
     respond_to do |format|
       if @menu.save
 
-        format.html { redirect_to restaurant_menus_path(@restaurant), notice: 'Menu was successfully created.' }
-        # format.html { redirect_to new_item_path, notice: 'Menu was successfully created.' }
-        format.json { render :show, status: :created, location: @menu }
+        # format.html { redirect_to restaurant_menus_path(@restaurant), notice: 'Menu was successfully created.' }
+
+        format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
+
+
+        # format.html { redirect_to new_menu_item_path, notice: 'Menu was successfully created.' }
+
+
+        # format.json { render :show, status: :created, location: restaurant_menu_path(@menu) }
       else
         format.html { render :new }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
@@ -76,4 +84,5 @@ class MenusController < ApplicationController
     def menu_params
       params.require(:menu).permit(:title, :user_id, :restaurant_id)
     end
+
 end

@@ -1,16 +1,14 @@
 class UsersController < ApplicationController
 
-  def dashboard
-    @user = current_user
-
-    @restaurants = Restaurant.where(user_id: @user).order("created_at DESC")
-
-    #
-    # @restaurants = current_user.restaurants
-    #
+  def index
+    @users = User.all
+    @restaurants = Restaurant.where(user_id: @user).paginate(page: params[:page]).order("created_at DESC")
+    #### Pagination found in model.rb file(control amount of @instances per page)
   end
 
   def show
+    @user = current_user
+    @restaurants = Restaurant.where(user_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
   end
 
   def new
@@ -22,10 +20,15 @@ class UsersController < ApplicationController
   end
 
   def create
+
     user = User.new(user_params)
+    # @user = User.new(user_params)
+
       if user.save
         session[:user_id] = user.id
-        redirect_to '/dashboard'
+        redirect_to current_user
+
+        flash[:register_success] = ["Welcome #{current_user.email}, thank you for registering."]
       else
         flash[:register_errors] = ["REGISTER ERROR. Invalid credentials, please try again."]
         # redirect_to users_index_path
@@ -56,7 +59,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit( :email, :password, :password_confirmation)
     end
 
 end

@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email:login_params[:email])
     if user && user.authenticate(login_params[:password])
       session[:user_id] = user.id
-      redirect_to '/dashboard'
+      redirect_to current_user
     else
-      flash[:login_errors] = ['LOGIN ERROR. Invalid credentials, please try again.']
+      flash[:login_errors] = ['Invalid credentials, please try again.']
       # redirect_to users_index_path
       redirect_to root_path
     end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     cookies.delete(:auth_token)
-    redirect_to root_url, :notice => ["Logged out successfully."]
+    redirect_to root_url, :notice => "Logged out successfully."
   end
 
   private

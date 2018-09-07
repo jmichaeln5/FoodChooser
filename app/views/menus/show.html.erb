@@ -1,23 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
   <%= @menu.title %>
-</p>
 
-<%= link_to 'Edit', edit_restaurant_menu_path(@restaurant, @menu) %> |
-<td><%#= link_to 'Show', edit_restaurant_menu_path(@restaurant, @menu) %></td>
+<br>
+<%= link_to 'Edit Menu', edit_restaurant_menu_path(@restaurant, @menu), class:"btn btn-outline-secondary" %>
 
+<%= link_to 'Delete Menu', restaurant_menu_path(@restaurant, @menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this menu forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
 
-
-<!--                         ******** Broken (from Restaurnts#show) ***********
-                             ******** Broken (from Restaurnts#show) ***********
-
-<%#= link_to 'Edit', edit_restaurant_menu_path(@restaurant, menu) %>
-
-                             ******** Broken (from Restaurnts#show) ***********
-                            ******** Broken (from Restaurnts#show) ***********
- -->
+<br>
 
 
-<%= link_to 'Back', :back %>
+<br>
+<%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>

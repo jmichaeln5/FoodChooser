@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20180724001532) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "restaurant_id"
-    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
-    t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -39,8 +37,6 @@ ActiveRecord::Schema.define(version: 20180724001532) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "menu_id"
-    t.index ["menu_id"], name: "index_restaurants_on_menu_id"
-    t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,10 +44,6 @@ ActiveRecord::Schema.define(version: 20180724001532) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
   end
 
-  add_foreign_key "restaurants", "menus"
-  add_foreign_key "restaurants", "users"
 end

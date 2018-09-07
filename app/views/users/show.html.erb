@@ -1,2 +1,16 @@
-<h5> Users#Show </h5>
+<h3> Users#Show | User Profile</h3>
 <!-- app/views/users/show -->
+
+<hr>
+<br>
+
+<h3> Welcome <%= current_user.email %> </h3>
+<h4> You have <%= @restaurants.count %> Restaurants  </h4>
+
+<br>
+
+<%#= link_to 'Add Restaurant', user_restaurants_path(current_user), class:"btn btn-success btn-block" %>
+
+
+
+<%= render "restaurants/rendered" %>

@@ -1,5 +1,5 @@
-<%#= form_with(model: @menu, local: true) do |form| %>
-<%= form_with(model: [ @restaurant, @restaurant.menus.build ]) do |form| %>
+<%= form_with(model: @menu, local: true) do |form| %>
+<%#= form_with(model: [ @restaurant, @restaurant.menus.build ]) do |form| %>
 
   <% if @menu.errors.any? %>
     <div id="error_explanation">
@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= form.label :restaurant_id, 'Restaurant ID' %>
-  <%= form.text_field :restaurant_id, id: :restaurant_id, value: @restaurant.id %>
+  <%= form.text_field :restaurant_id, id: :restaurant_id, value: @menu.restaurant.id %>
   </div>
 
 <hr>

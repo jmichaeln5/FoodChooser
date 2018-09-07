@@ -1,51 +1,10 @@
-<h1>User's Dashboard</h1>
+<h1>Dashboard</h1>
 
-<h5> Welcome <%= @user.email %> </h5>
+<h1> Welcome <%= @user.email %></h1>
 
-<%#= render template:'restuarants/index' %>
 
-<br>
-<hr>
+<% @restaurants.each do |restaurant| %>
 
-<%= link_to 'Add New Restaurant', new_user_restaurant_path(@user), class:"btn btn-success", :style => "color: #f8f8f8;" %>
-<br>
-<hr>
+  <%= restaurant.title %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.title %></td>
-        <td><%= link_to 'Show',  user_restaurant_path( @user, restaurant) %></td>
-        <td><%= link_to 'Edit', edit_user_restaurant_path( @user, restaurant) %></td>
-        <td><%= link_to 'Destroy', user_restaurant_path( @user, restaurant ), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-
-</table>
-
-<br>
-<hr>
-
-<br>
-<br>
-<%= link_to "Restaurants", user_restaurants_path(@user) %>
-<br>
-<%= link_to "Generate Random Restaurants", selected_random_restaurant_path %>
-<br>
-<hr>
-<%= link_to "Items", items_path %>
-<br>
-<%= link_to "Generate Random Items", selected_random_item_path %>
-
-<br>
-<hr>
-<%= link_to "Edit Profile", edit_user_path(current_user) %>
+<% end %>
