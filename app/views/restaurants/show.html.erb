@@ -2,45 +2,56 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h1 class="text-center">
-    <strong>Restaurant:</strong>
-    <%= @restaurant.title %>
-    <br>
-  </h1>
+<div class="card py-5 text-center">
+  <h1> <%= "#{@restaurant.title.capitalize}"%> Menus</h1>
+  <div class="container">
+    <p>
+    <h5>
+      <%= link_to 'Edit Restaurant', edit_user_restaurant_path(@user, @restaurant), class:"btn btn-outline-secondary" %>
 
-<h5>
+      <%= link_to 'Delete Restaurant', user_restaurant_path(@restaurant) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
+    </h5>
+    </p>
 
-  <%= link_to 'Edit Restaurant', edit_user_restaurant_path(@user, @restaurant), class:"btn btn-outline-secondary" %>
-
-  <%= link_to 'Delete Restaurant', user_restaurant_path(@restaurant) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
-
-</h5>
-</p>
 <hr>
 
+  <div class="container">
+    <%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+  </div>
 
-<%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-success btn-block", :style => "color: #f8f8f8;"  %>
-<hr>
+  <br>
 
-<% @menus.each do |menu | %>
+    <div class="conatiner">
+    <% @menus.each do |menu| %>
+      <div class="card">
+        <br>
+        <div class="card-body text-center">
+          <h5 class="card-title"> <%= menu.title %> </h5>
+          <h6 class="card-title"> Restaurant ID who posted menu: <%= menu.restaurant_id %> </h6>
 
-    <strong> Menu:</strong> <%= link_to "#{menu.title}", restaurant_menu_path(@restaurant, menu) %>
+          <%= link_to 'View Menu', restaurant_menu_path(@restaurant, menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+
+
+        </div>
+        <div class="card-footer text-muted text-center">
+            Added <%= time_ago_in_words(menu.created_at) %> ago.
+        </div>
+
+        <% end %>
+      </div>
+    </div>
   <hr>
-<% end %>
+  <br>
+
+  <div class="text-center">
+    <%= will_paginate @menus, page_links: false %>
+    <!-- <%= will_paginate(@menus) %> -->
+  </div>
+
+  <div>
+  <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+  </div>
 
 <br>
-
-<%= link_to "View All Menus for #{@restaurant.title}", restaurant_menus_path(@restaurant), class:"btn btn-outline-primary"%>
-
-
-
-<br>
-
-<br>
-<hr>
-
-<br>
-<%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
-
+</div>
 </div>

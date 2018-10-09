@@ -1,31 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
-  <%= @restaurant.title%> Menus
-</h1>
-<%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-success", :style => "color: #f8f8f8;"  %>
+<div class="card py-5 text-center">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+  <h1> <%= "#{@restaurant.title}"%> Menus</h1>
+
+  <br>
+
+  <div class="container">
+
+
+  <div class="container">
+    <%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+  </div>
+
+  <br>
+
+    <div class="conatiner">
     <% @menus.each do |menu| %>
-      <tr>
-        <td><%= menu.title %></td>
-        <td><%= link_to 'Show', restaurant_menu_path(@restaurant, menu) %></td>
+      <div class="card">
+        <br>
+        <div class="card-body text-center">
+          <h5 class="card-title"> <%= menu.title %> </h5>
+          <h6 class="card-title"> Restaurant ID who posted menu: <%= menu.restaurant_id %> </h6>
 
-        <td><%= link_to 'Edit', edit_restaurant_menu_path(@restaurant, menu) %></td>
+          <%= link_to 'Show', restaurant_menu_path(@restaurant, menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
 
-        <!-- <td><%= link_to 'Delete Menu', restaurant_menu_path(@restaurant, menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this menu forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %></td> -->
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+        <div class="card-footer text-muted text-center">
+            Added <%= time_ago_in_words(menu.created_at) %> ago.
+        </div>
 
-<br>
+        <% end %>
+      </div>
+    </div>
+  <hr>
+  <br>
+
+  <div class="text-center">
+    <%= will_paginate @menus, page_links: false %>
+    <!-- <%= will_paginate(@menus) %> -->
+  </div>
+
+  <hr>
+
+
+  <br>
+  <div>
+  <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+  </div>
+
+</div>

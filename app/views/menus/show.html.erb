@@ -1,31 +1,60 @@
+<div class="text-center">
+
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-center">
-  <strong> Restaurant: </strong>
-  <%= @restaurant.title %>
-  <br>
-  <%= link_to 'Edit Restaurant', edit_user_restaurant_path(@user, @restaurant), class:"btn btn-lg btn-outline-secondary" %>
+<div class="card py-5 text-center">
+  <h1> <%= "#{@restaurant.title.capitalize} #{@menu.title.capitalize}"%> </h1>
+  <div class="container">
+    <p>
+    <h5>
 
+      <%= link_to 'Edit Menu', edit_restaurant_menu_path(@restaurant, @menu), class:"btn btn-outline-secondary" %>
+
+      <%= link_to 'Delete Menu', restaurant_menu_path(@restaurant, @menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
+    </h5>
+    </p>
+
+<hr>
+
+  <div class="container">
+    <%= link_to "Add Menu Item", new_restaurant_menu_item_path(@restaurant, @menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+  </div>
+
+  <br>
+
+    <div class="conatiner">
+    <% @items.each do |item| %>
+      <div class="card">
+        <br>
+        <div class="card-body text-center">
+          <h5 class="card-title"> <%= item.item_name %> </h5>
+          <h5 class="card-title"> <%= item.price %> </h5>
+          <h5 class="card-title"> <%= item.description %> </h5>
+          <h6 class="card-title"> Menu ID who posted item: <%= @menu.restaurant_id %> </h6>
+
+          <%= link_to 'Show', restaurant_menu_path(@restaurant, menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+
+
+        </div>
+        <div class="card-footer text-muted text-center">
+            Added <%= time_ago_in_words(menu.created_at) %> ago.
+        </div>
+
+        <% end %>
+      </div>
+    </div>
   <hr>
-  <strong>Menu:</strong>
-  <%= @menu.title %>
   <br>
-</h1>
 
-<%= link_to 'Edit Menu', edit_restaurant_menu_path(@restaurant, @menu), class:"btn btn-outline-secondary" %>
+  <div class="text-center">
+    <%= will_paginate @menus, page_links: false %>
+    <!-- <%= will_paginate(@menus) %> -->
+  </div>
 
-
-<%= link_to 'Delete Menu', restaurant_menu_path(@restaurant, @menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
-
-
-
-<hr>
-
+  <div>
+  <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+  </div>
 
 <br>
-
-
-<br>
-<hr>
-
-<%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+</div>
+</div>

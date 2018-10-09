@@ -14,27 +14,27 @@ Rails.application.routes.draw do
 
   # resources :users
   # resources :restaurants
-  # resources :menus
+  resources :menus
   # resources :items
 
   resources :users do
     resources :restaurants
   end
 
-  resources :restaurants do
-    resources :menus
-  end
-
-
   # resources :restaurants do
-  #   resources :menus do
-  #     resources :items
-  #   end
+  #   resources :menus
   # end
 
-  resources :menus do
-    resources :items
+
+  resources :restaurants do
+    resources :menus do
+      resources :items
+    end
   end
+
+  # resources :menus do
+  #   resources :items
+  # end
 
 
 
