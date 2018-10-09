@@ -9,16 +9,10 @@
   <div class="container">
 
       <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
-
   <hr>
 
   <div class="container">
-    <%#= link_to 'New Restaurant', new_user_restaurant_path(@user), class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
-
     <%= link_to 'New Restaurant', new_restaurant_path(@user), class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
-
-
-    <!-- user_restaurant_path(restaurant, @user) -->
   </div>
 
   <br>
@@ -50,7 +44,6 @@
 
   <div class="text-center">
     <%= will_paginate @restaurants, page_links: false %>
-    <!-- <%= will_paginate(@restaurants) %> -->
   </div>
 
   <hr>

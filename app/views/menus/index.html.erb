@@ -1,11 +1,9 @@
-<!-- http://localhost:3000/restaurants/1/menus -->
-
 <p id="notice"><%= notice %></p>
 
 <h1>
   <%= @restaurant.title%> Menus
 </h1>
-<%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+<%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-success", :style => "color: #f8f8f8;"  %>
 
 <table>
   <thead>
@@ -23,7 +21,8 @@
 
         <td><%= link_to 'Edit', edit_restaurant_menu_path(@restaurant, menu) %></td>
 
-        <td><%#= link_to 'Destroy', restaurant_menu_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <td><%= link_to 'Delete Menu', restaurant_menu_path(@restaurant, menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this menu forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %></td> -->
+
       </tr>
     <% end %>
   </tbody>

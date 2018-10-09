@@ -3,6 +3,14 @@
 <h1>New Menu</h1>
 
 <%= render 'form', menu: @menu %>
+<% puts "" %>
+<% puts "********" %>
+<% puts "" %>
+<% puts "Restaurant ID: #{@restaurant.id}" %>
+<% puts "Restaurant ID:" + @restaurant.id.to_s %>
+<% puts "" %>
+<% puts "********" %>
+<% puts "" %>
 
 <br>
 <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>

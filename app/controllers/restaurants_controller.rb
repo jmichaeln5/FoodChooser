@@ -3,7 +3,6 @@ class RestaurantsController < ApplicationController
 
   def index
     @user = current_user
-
     @restaurants = Restaurant.where(user_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
     #### Pagination found in model.rb file(control amount of @instances per page)
   end
@@ -11,13 +10,12 @@ class RestaurantsController < ApplicationController
   def show
     @user = current_user
     @restaurant = Restaurant.find(params[:id])
-    @menus = Menu.where(restaurant_id: @restaurant )
+    @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
 
   end
 
   def new
     @user = current_user
-    # @user = User.find(params[:id])
     @restaurant = @user.restaurants.build
   end
 
@@ -26,15 +24,12 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    # @restaurant = @restaurant.build(restaurant_params)
-    # @restaurant = current_user.restaurants.build
     @user = current_user
-    @restaurant = Restaurant.new(restaurant_params)
-
+    @restaurant = @user.restaurants.build(restaurant_params)
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to restaurants_path(@restaurant), notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to user_restaurant_path(@user, @restaurant), notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new }
@@ -56,9 +51,11 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
+
     @restaurant.destroy
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to user_restaurants_path(@user), notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

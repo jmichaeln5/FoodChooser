@@ -10,15 +10,11 @@
       <% if current_user %>
 
       <li class="nav-item">
-        <%= link_to "Welcome #{current_user.email}",  user_path(current_user), class:"nav-link"   %>
+        <%= link_to "Welcome #{current_user.email}",  user_path(@user), class:"nav-link"   %>
       </li>
 
         <li class="nav-item">
-          <%= link_to "User Restaurants",  restaurants_path, class:"nav-link"   %>
-        </li>
-
-        <li class="nav-item">
-           <%= link_to ' My Profile', current_user %>
+          <%= link_to "User Restaurants",  user_restaurants_path(@user), class:"nav-link"   %>
         </li>
 
         <li class="nav-item">

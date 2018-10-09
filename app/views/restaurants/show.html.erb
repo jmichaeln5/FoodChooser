@@ -10,32 +10,31 @@
   </h1>
 
 <h5>
-  <%#= link_to 'Edit Restaurant', edit_user_restaurant_path(current_user, @restaurant), class:"btn btn-outline-secondary" %>
 
-  <%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant), class:"btn btn-outline-secondary" %>
+  <%= link_to 'Edit Restaurant', edit_user_restaurant_path(@user, @restaurant), class:"btn btn-outline-secondary" %>
 
-  <%= link_to 'Delete Restaurant', restaurant_path(@restaurant) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
+  <%= link_to 'Delete Restaurant', user_restaurant_path(@restaurant) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
 
 </h5>
-
 </p>
 <hr>
 
-<div class="text-center">
-<%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-success", :style => "color: #f8f8f8;"  %>
-</div>
 
-<br>
+<%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-success btn-block", :style => "color: #f8f8f8;"  %>
+<hr>
 
-<% if Menu.any? %>
-    <% @menus.each do |menu| %>
-        <%= menu.title %>
-        <%= link_to 'View Menu', restaurant_menu_path(@restaurant, menu) %>
-        <br>
-      <% end %>
+<% @menus.each do |menu | %>
+
+    <strong> Menu:</strong> <%= link_to "#{menu.title}", restaurant_menu_path(@restaurant, menu) %>
+  <hr>
 <% end %>
 
 <br>
+
+<%= link_to "View All Menus for #{@restaurant.title}", restaurant_menus_path(@restaurant), class:"btn btn-outline-primary"%>
+
+
+
 <br>
 
 <br>

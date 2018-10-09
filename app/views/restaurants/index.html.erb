@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% puts @restaurants%>
 <div class="card py-5 text-center">
 
   <h1>Restaurants</h1>
@@ -13,12 +13,7 @@
   <hr>
 
   <div class="container">
-    <%#= link_to 'New Restaurant', new_user_restaurant_path(@user), class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
-
-    <%= link_to 'New Restaurant', new_restaurant_path(@user), class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
-
-
-    <!-- user_restaurant_path(restaurant, @user) -->
+    <%= link_to 'New Restaurant', new_user_restaurant_path(@user), class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
   </div>
 
   <br>
@@ -26,17 +21,12 @@
     <div class="conatiner">
     <% @restaurants.each do |restaurant| %>
       <div class="card">
-
         <br>
         <div class="card-body text-center">
           <h5 class="card-title"> <%= restaurant.title %> </h5>
           <h6 class="card-title"> User's ID who posted restaurant: <%= restaurant.user_id %> </h6>
 
-          <%#= link_to 'Show', user_restaurant_path(@user, restaurant ), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
-
-          <%#= link_to 'Show', restaurant_path(@user), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
-
-          <%= link_to 'Show', restaurant_path(restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+          <%= link_to 'Show', user_restaurant_path(@user, restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
 
 
         </div>
