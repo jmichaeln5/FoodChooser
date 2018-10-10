@@ -16,10 +16,10 @@
 <hr>
 
 <div class="card py-5 text-center">
-  <h1>Menus</h1>
+  <h1><%= "#{@restaurant.title.capitalize}"%> Menus</h1>
 
   <div class="container">
-    <%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+    <%= link_to "Add New Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
   </div>
 
   <br>
@@ -32,7 +32,7 @@
           <h5 class="card-title"> <%= menu.title %> </h5>
           <h6 class="card-title"> Restaurant ID who posted menu: <%= menu.restaurant_id %> </h6>
 
-          <%= link_to 'View Menu', restaurant_menu_path(@restaurant, menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+          <%= link_to 'View Menu', menu_path(menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
 
 
         </div>

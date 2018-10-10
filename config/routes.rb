@@ -12,20 +12,14 @@ Rails.application.routes.draw do
   get '/selected/random_item'
   get '/selected/random_restaurant'
 
-  # resources :users
-  # resources :restaurants
-  # resources :menus
-  # resources :items
-
   resources :users do
     resources :restaurants
   end
 
   resources :restaurants do
-    resources :menus
+    resources :menus, only: [:index, :new, :create]
   end
-  # resources :menus, only: [ :edit, :update]
-  # resources :menus
+  resources :menus, only: [ :show, :edit, :update, :destroy]
 
   resources :menus do
     resources :items
