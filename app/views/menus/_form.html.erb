@@ -13,26 +13,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-      <%= form.hidden_field :restaurant_id, id: :restaurant_id, value: @restaurant.id %>
-  </div>
-
-  <div>
-    <%= "Restaurant ID" %>
-    <br>
-    <%= @restaurant.id %>
-    <br>
-    <% form.label :restaurant_id %>
-    <% form.text_area :restaurant_id, id: @restaurant.id %>
-  </div>
 
 <hr>
 <br>
 
-  <div class="field">
-    <%= form.label :title, 'Menu Title' %>
-    <%= form.text_field :title, id: :menu_title %>
-  </div>
+<div class="field">
+    <%= form.hidden_field :restaurant_id, id: :restaurant_id, value: @restaurant.id %>
+</div>
+
+
+<div class="field">
+  <%= " Restaurant ID" %>
+  <%= @restaurant.id %>
+  <br>
+  <% form.label :restaurant_id %>
+  <% form.text_area :restaurant_id, id: :restaurant_id %>
+</div>
+
+<%= @menu.title%>
+<div class="field">
+  <%= form.label :title, 'Menu Title' %>
+  <%= form.text_field :title, id: :menu_title %>
+</div>
+
 
   <div class="actions">
     <%= form.submit %>

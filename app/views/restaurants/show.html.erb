@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="card py-5 text-center">
-  <h1> <%= "#{@restaurant.title.capitalize}"%> Menus</h1>
+  <h1> <%= "#{@restaurant.title.capitalize}"%></h1>
   <div class="container">
     <p>
     <h5>
@@ -14,6 +14,9 @@
     </p>
 
 <hr>
+
+<div class="card py-5 text-center">
+  <h1>Menus</h1>
 
   <div class="container">
     <%= link_to "Add Menu", new_restaurant_menu_path(@restaurant), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
@@ -53,5 +56,6 @@
   </div>
 
 <br>
+</div>
 </div>
 </div>
