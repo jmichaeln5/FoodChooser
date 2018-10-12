@@ -42,10 +42,6 @@ class MenusController < ApplicationController
       end
 
   def update
-    # @restaurant = Restaurant.find(params[:restaurant_id])
-    # @restaurant = Restaurant.where(menu_id: @menu.id )
-
-    # @menu = @restaurant.menus.build(menu_params)
 
     respond_to do |format|
       if @menu.update(menu_params)
