@@ -1,5 +1,14 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :random_item]
+  before_action :set_user
+
+
+  def random_item
+    @user = current_user
+
+    @items = Item.where(menu_id: Menu.find(params[:menu_id])).paginate(page: params[:page]).order("created_at DESC")
+    @selected_item = @items.all.shuffle.first
+  end
 
   # GET /items
   # GET /items.json
@@ -16,7 +25,9 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new
+    # @item = Item.new
+    @menu = Menu.find(params[:menu_id])
+    @item = @menu.items.build
   end
 
   # GET /items/1/edit
@@ -26,11 +37,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    # @item = Item.new(item_params)
+    @menu = Menu.find(params[:menu_id])
+    @item = @menu.items.build(item_params)
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -56,9 +69,10 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @menu = Menu.find(params[:menu_id])
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to menu_item_path(@menu), notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,8 +83,12 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_name, :price, :description)
+      params.require(:item).permit(:item_name, :price, :description, :menu_id)
     end
 end

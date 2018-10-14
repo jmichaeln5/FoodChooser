@@ -1,12 +1,78 @@
-<h3> Users#Show | User Profile</h3>
+<!-- <h3> Users#Show | User Profile</h3> -->
 <!-- app/views/users/show -->
-
-<hr>
-<br>
 
 <h3> Welcome <%= current_user.email %> </h3>
 <!-- <h4> You have <%#= @restaurants.count %> Restaurants  </h4> -->
+<hr>
+
+<div class="card">
+  <div class="card-body">
+
+    <% if current_user.restaurants.count > 1 %>
+    <h4> You have <%= "#{@user.restaurants.count} Restaurants."%></h4>
+    <% end %>
+
+    <br>
+    <%= link_to "Restaurants",  user_restaurants_path(@user), class:"btn btn-primary btn-block"  %>
+    <br>
+     <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
+  </div>
+</div>
+
+<br>
+<br>
+
+
+<!-- <div class="btn-group">
+          <div class="card" style="width: 100%;">
+            <div class="card-header">
+              <h1>
+                <%= link_to "Restaurants",  user_restaurants_path(@user) %>
+              </h1>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">   <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
+</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+
+          <div class="card" style="width: 100%;">
+            <div class="card-header">
+              <h1>
+                <%= link_to "Restaurants",  user_restaurants_path(@user) %>
+              </h1>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+</div> -->
+
 
 <br>
 
+
+
+
+
+<!-- <div class="card">
+  <div class="card-body">
+<%= link_to "Restaurants",  user_restaurants_path(@user) %>
+</div>
+</div>
+<br>
+
+<div class="btn-group">
+  <%= link_to "Restaurants",  user_restaurants_path(@user), class:"btn btn-primary btn-block" %>
+  <br>
+
+   <%= link_to "Restaurants",  user_restaurants_path(@user), class:"btn btn-success"   %>
+
+   <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
+</div>
+ -->
 <%#= render "restaurants/rendered" %>

@@ -11,15 +11,17 @@
 
         <%= link_to 'Delete Menu', menu_path(@menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
 
-
-        <%#= link_to 'Delete Menu', restaurant_menu_path(@restaurant, @menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
       </h5>
     </p>
 
 <hr>
 
-  <div class="container">
-    <%= link_to "FAKE BUTTON: Add Menu Item", '#', class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+    <!-- <%= link_to "Generate Random Item", selected_random_item_path, class:"btn btn-outline-primary"  %> -->
+<hr>
+<div class="container">
+
+
+    <%= link_to "Add Item", new_menu_item_path(@menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
 
 <!-- Button routes to restaurant/menu/item/new -->
     <%#= link_to "Add Menu Item", new_restaurant_menu_item_path(@restaurant, @menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
@@ -37,12 +39,11 @@
           <h5 class="card-title"> <%= item.description %> </h5>
           <h6 class="card-title"> Menu ID who posted item: <%= @menu.restaurant_id %> </h6>
 
-          <%= link_to 'Show', restaurant_menu_path(@restaurant, menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
-
+          <%= link_to 'Show', item_path(item), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
 
         </div>
         <div class="card-footer text-muted text-center">
-            Added <%= time_ago_in_words(menu.created_at) %> ago.
+            Added <%= time_ago_in_words(item.created_at) %> ago.
         </div>
 
         <% end %>

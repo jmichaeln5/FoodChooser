@@ -1,3 +1,44 @@
 <h1 class="text-center">Editing Item</h1>
 <br>
-<%= render 'form', item: @item %>
+<%= form_with(model: @item, local: true) do |form| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="card text-center py-5">
+    <div class="field">
+      <%= form.label :item_name %>
+      <%= form.text_field :item_name, id: :item_item_name %>
+    </div>
+    <hr>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price, id: :item_price %>
+    </div>
+    <hr>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :item_description %>
+    </div>
+    <hr>
+    <br>
+
+    <div class="actions">
+      <%= form.submit  class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="text-center py-5">
+<%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+</div>

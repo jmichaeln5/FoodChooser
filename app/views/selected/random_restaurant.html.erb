@@ -1,21 +1,26 @@
 <p id="notice"><%= notice %></p>
+
+
 <div class="content-center">
 
 <% if 1 >= @restaurants.count  %>
 
 <div class="card text-center py-5">
-  <a href="/restaurants/new">
-    <h5>
-      <font color="red">
-              You Need to Add At Least 2 Restaurants to Generate a Random Restaurant.
+  <h5>
+    <font color="red">
+      <%= link_to 'You Need to Add At Least 2 Restaurants to Generate a Random Restaurant.', new_user_restaurant_path(@user), :style => "color: #f40404;" %>
       </font>
-    </h5>
-  </a>
+  </h5>
 </div>
 
 <% else %>
 
+<br>
+
 <h1 class="text-center"> Random Restaurant </h1>
+
+<br>
+
 <div class="card">
   <div class="card-header text-center ">
     You Got
@@ -25,18 +30,23 @@
     <%= link_to 'Show', restaurant_path(@selected_restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
   </div>
 
-  <div class="container">
-    <div class="container">
-        <%= button_to "Randomize", selected_random_restaurant_path, :method => :get, class:"btn btn-info btn-block" %>
-    </div>
-  </div>
-
   <br>
 
   <div class="card-footer text-muted text-center">
       Added <%= time_ago_in_words(@selected_restaurant.created_at) %> ago.
   </div>
+</div>
+
+
+<br>
+<br>
+  <div class="container card">
+    <br>
+    <%= button_to "Randomize", selected_random_restaurant_path, :method => :get, class:"btn btn-info btn-lg btn-block" %>
+    <br>
   </div>
+
+
 </div>
 
 <% end %>

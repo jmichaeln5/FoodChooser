@@ -13,23 +13,20 @@
           <h5> Please Add At Least 2 Items So We Can Generate a Random Item. </h5>
       </a>
     </div>
-
   <% elsif @items.count <= 1  %>
     <div class="card text-center py-5">
       <a href="/items/new">
           <h5> Please Add At Least 1 More Item So We Can Generate a Random Item. </h5>
       </a>
     </div>
-
     <% else @items.count > 2 %>
       <%= link_to 'Generate Random Item', selected_random_item_path, class:"btn btn-outline-primary" %>
-
   <% end %>
 
   <hr>
 
   <div class="container">
-    <%= link_to 'New Item', new_item_path, class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
+    <%= link_to 'New Item', new_menu_item_path, class:"btn btn-success btn-block", :style => "color: #f8f8f8;" %>
   </div>
 
   <br>

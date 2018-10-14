@@ -50,29 +50,24 @@
 <!--  -->
 
 
-<h1>Landing Page</h1>
-<h1>Home Page</h1>
-<br>
-<hr>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to FoodChooser </h1>
 
-<h1>Welcome to the Home Page of FoodChooser </h1>
+<br>
+
+<p>Have you ever wondered where to eat? I feels your pain friend, hence FoodChooser! Enter a few of your favorite restaurants, click generate random restaurant and get a randomized choice. Not feeling choice 1? No Sweat, generate as many results as you please. What up Josh! What up Silva! What up Gian!  </p>
 
 <br>
 
 <% if current_user  %>
-
-<h1> Welcome <%= current_user.email %> </h1>
-
+  <h1> Welcome <%= current_user.email %> </h1>
 <% else %>
-
-<h5> Login </h5>
-  <form action="/sessions" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
-    <input type="email" name="login[email]" placeholder="Email">
-    <input type="password" name="login[password]" placeholder="Password">
-    <input type="submit" name="submit" class="submit">
-  </form>
+  <h5> Login </h5>
+    <form action="/sessions" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+      <input type="email" name="login[email]" placeholder="Email">
+      <input type="password" name="login[password]" placeholder="Password">
+      <input type="submit" name="submit" class="submit">
+    </form>
 
 <br>
 

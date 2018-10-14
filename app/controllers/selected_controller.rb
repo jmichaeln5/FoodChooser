@@ -1,21 +1,17 @@
 class SelectedController < ApplicationController
 
-  def random_item
-    @user = current_user
-
-    @items = Item.all
-    @selected_item = Item.all.shuffle.first
-  end
+  # def random_item
+  #   @user = current_user
+  #
+  #   @items = Item.where(menu_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
+  #   @selected_item = @items.all.shuffle.first
+  # end
 
   def random_restaurant
     @user = current_user
 
-    @restaurants = Restaurant.all
-    @selected_restaurant = Restaurant.all.shuffle.first
-
-    # @restaurants = Restaurant.where(user_id: @user)
-    # @selected_restaurant = @restaurants.all.shuffle.first
-
+    @restaurants = Restaurant.where(user_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
+    @selected_restaurant = @restaurants.shuffle.first
   end
 
 end

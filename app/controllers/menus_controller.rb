@@ -13,7 +13,6 @@ class MenusController < ApplicationController
     @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
 
     @items = Item.where(menu_id: @menu ).paginate(page: params[:page]).order("created_at DESC")
-
   end
 
   def new
