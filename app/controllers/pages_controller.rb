@@ -6,6 +6,12 @@ class PagesController < ApplicationController
     end
   end
 
+  def login
+  end
+
+  def register
+  end
+
   def about
   end
 end

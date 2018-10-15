@@ -13,9 +13,9 @@
         <%= link_to "Welcome #{@user.email}",  user_path(@user), class:"nav-link"   %>
       </li>
 
-        <li class="nav-item">
-          <%= link_to "User Restaurants",  user_restaurants_path(@user), class:"nav-link"   %>
-        </li>
+      <li class="nav-item">
+        <%= link_to "User Restaurants",  user_restaurants_path(@user), class:"nav-link"   %>
+      </li>
 
         <li class="nav-item">
            <!-- <%= link_to ' Log out', logout_path %> -->
@@ -33,10 +33,9 @@
 
         <!-- <li class="nav-item">
           <a class="nav-link" href="/start">Start <span class="sr-only">(current)</span></a>
-        </li> -->
+        </li>
 
-
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/restaurants">Restaurants <span class="sr-only">(current)</span></a>
         </li>
 
@@ -45,10 +44,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/items">Items</a>
-        </li> -->
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/users/index">Users#index</a>
-        </li>
+        </li> -->
 
       <% end %>
     </ul>

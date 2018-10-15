@@ -69,28 +69,63 @@ Password: <strong>exampleaccount</strong>
 <% if current_user  %>
   <h1> Welcome <%= current_user.email %> </h1>
 <% else %>
-  <h5> Login </h5>
-    <form action="/sessions" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
-      <input type="email" name="login[email]" placeholder="Email">
-      <input type="password" name="login[password]" placeholder="Password">
-      <br>
-      <input type="submit" name="submit" class="submit">
-    </form>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+  Login
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= render "pages/login" %>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br>
 
-<h5> Sign Up </h5>
-  <form action="/users" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="email" name="user[email]" placeholder="Email">
-    <!-- <input type="email" name="user[email]" value="user1@gmail.com"> -->
-    <input type="password" name="user[password]" placeholder="Password">
-    <!-- <input type="password" name="user[password]" value="123456"> -->
-    <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
-    <!-- <input type="password" name="user[password_confimation]" value="123456"> -->
-    <br>
-    <input type="submit" name="submit" class="submit">
-  </form>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+  Sign Up
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= render "pages/register" %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <% end %>

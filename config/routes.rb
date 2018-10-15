@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'users/index'
   post 'sessions' => 'sessions#create'
-
+  get 'login' => 'pages#login', :as => "login"
+  get 'register' => 'pages#register', :as => "register"
   get 'logout' => 'sessions#destroy', :as => "logout"
   # delete 'logout' => 'sessions#destroy'
   get '/pages/about'

@@ -1,0 +1,23 @@
+<div class="card">
+  <br>
+<h1> Sign Up </h1>
+<hr>
+  <form action="/sessions" method="POST">
+    <h3>Email</h3>
+    <form action="/users" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="email" name="user[email]" placeholder="Email">
+    <br>
+    <br>
+
+    <h3>Password</h3>
+      <input type="password" name="user[password]" placeholder="Password">
+      <br>
+      <br>
+      <input type="password" name="user[password_confimation]" placeholder="Password Confirmation">
+    <br>
+    <br>
+    <input type="submit" name="submit" class="submit">
+  </form>
+  <br>
+</div>
