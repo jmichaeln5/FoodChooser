@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'start' => 'start#index'
-
   root 'pages#home'
+  get 'start' => 'start#index'
   get 'users/index'
-  post 'sessions' => 'sessions#create'
-  get 'login' => 'pages#login', :as => "login"
-  get 'register' => 'pages#register', :as => "register"
-  get 'logout' => 'sessions#destroy', :as => "logout"
-  # delete 'logout' => 'sessions#destroy'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   get '/pages/about'
   get '/selected/random_item'
   get '/selected/random_restaurant'
