@@ -21,15 +21,19 @@
 
             <%= link_to "My Profile",  user_path(@user), class:"dropdown-item" %>
 
+            <div class="dropdown-divider"></div>
+
+
             <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"dropdown-item" %>
+
+            <div class="dropdown-divider"></div>
+
+            <%= link_to 'Account Settings',  edit_user_path(@user), class:"dropdown-item" %>
 
             <div class="dropdown-divider"></div>
 
             <a class="dropdown-item" href="/logout"> Logout </a>
 
-            <div class="dropdown-divider"></div>
-
-            <%= link_to 'Account Settings',  edit_user_path(@user), class:"dropdown-item" %>
 
           </div>
         </li>
