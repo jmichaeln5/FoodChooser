@@ -11,7 +11,7 @@ class MenusController < ApplicationController
 
   def show
     @restaurant = @menu.restaurant.id
-    
+
     @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
 
     @items = Item.where(menu_id: @menu ).paginate(page: params[:page]).order("created_at DESC")
@@ -63,7 +63,8 @@ class MenusController < ApplicationController
 
     @menu.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_menus_path(@restaurant), notice: 'Menu was successfully destroyed.' }
+      # format.html { redirect_to restaurant_menus_path(@restaurant), notice: 'Menu was successfully destroyed.' }
+      format.html { redirect_to restaurant_path(@restaurant), notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
