@@ -1,4 +1,4 @@
-<h1> Edit <%= @menu.title%> </h1>
+<h1> Edit <%= @menu.title%> Menu </h1>
 
 <%= form_with(model: @menu, local: true) do |form| %>
 
@@ -18,7 +18,6 @@
 <hr>
 <br>
 
-<%= @menu.title%>
 <div class="field">
   <%= form.label :title, 'Menu Title' %>
   <%= form.text_field :title, id: :menu_title %>

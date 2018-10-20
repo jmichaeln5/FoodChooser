@@ -1,53 +1,114 @@
 <div class="text-center">
-
 <p id="notice"><%= notice %></p>
 
-<div class="card py-5 text-center">
-  <h1>  <%= "#{@menu.title.capitalize}" %> </h1>
+
+
+<br>
+<br>
+<div class="float-right">
+
+    <%= link_to "My Profile", user_path(@user), :style=>'color:#291f41;' %>
+    >
+    <%= link_to "#{@menu.restaurant.title.capitalize}", restaurant_path(@menu.restaurant.id), :style=>'color:#291f41;' %>
+    >
+    <strong>
+    <u>
+      <%= link_to "#{@menu.title.capitalize} Menu", menu_path(@menu), :style=>'color:#291f41;' %>
+    </u>
+    </strong>
+</div>
+<br>
+
+<div class="card">
+  <br>
   <div class="container">
-    <p>
-      <h5>
-        <%= link_to 'Edit Menu', edit_menu_path(@menu), class:"btn btn-outline-secondary" %>
-
-        <%= link_to 'Delete Menu', menu_path(@menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this restaurant forever?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
-
-      </h5>
-    </p>
-
-<hr>
-
-    <!-- <%= link_to "Generate Random Item", selected_random_item_path, class:"btn btn-outline-primary"  %> -->
-<hr>
-<div class="container">
-
-
-    <%= link_to "Add Item", new_menu_item_path(@menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
-
-<!-- Button routes to restaurant/menu/item/new -->
-    <%#= link_to "Add Menu Item", new_restaurant_menu_item_path(@restaurant, @menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
-  </div>
-
   <br>
 
-    <div class="conatiner">
-    <% @items.each do |item| %>
-      <div class="card">
-        <br>
-        <div class="card-body text-center">
-          <h5 class="card-title"> <%= item.item_name %> </h5>
-          <h5 class="card-title"> <%= item.price %> </h5>
-          <h5 class="card-title"> <%= item.description %> </h5>
-          <h6 class="card-title"> Menu ID who posted item: <%= @menu.restaurant_id %> </h6>
+  <h4><strong> Menu: </strong> </h4>
 
-          <%= link_to 'Show', item_path(item), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+  <h1 class="display-4"> <%= "#{@menu.title.capitalize}"%>  Menu</h1>
+  <%= link_to 'Edit Menu', edit_menu_path(@menu), class:"btn btn-outline-secondary btn-sm" %>
 
+  <%= link_to 'Delete Menu', menu_path(@menu) , method: :delete, data: { confirm: 'Are you sure you would like to delete this menu forever?' }, class:"btn btn-danger btn-sm", :style => "color: #f8f8f8;"  %>
+
+
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="card container">
+
+  <br>
+  <br>
+  <h2> Items</h2>
+  <h4> <%= "#{@menu.title.capitalize}"%> menu has <%= @items.count %> items.
+  </h4>
+
+  <hr>
+
+    <%= link_to "Add Item", new_menu_item_path( @menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+
+    <!-- Modal Begin -->
+    <!-- Modal Begin -->
+    <!-- Modal Begin -->
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button> -->
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
-        <div class="card-footer text-muted text-center">
-            Added <%= time_ago_in_words(item.created_at) %> ago.
-        </div>
-
-        <% end %>
       </div>
+    </div> -->
+
+    <!-- Modal End -->
+    <!-- Modal End -->
+    <!-- Modal End -->
+
+
+    <div class="conatiner">
+        <% @items.each do |item| %>
+
+        <br>
+
+          <div class="card">
+            <br>
+            <div class="card-body text-center">
+              <h5 class="card-title"> <%= item.item_name %> </h5>
+              <h5 class="card-title"> <%= item.price %> </h5>
+              <h5 class="card-title"> <%= item.description %> </h5>
+
+              <%= link_to 'View Item', item_path(item), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+
+            </div>
+            <div class="card-footer text-muted text-center">
+                Added <%= time_ago_in_words(item.created_at) %> ago.
+            </div>
+          </div>
+        <% end %>
     </div>
   <hr>
   <br>
@@ -58,7 +119,7 @@
   </div>
 
   <div>
-  <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+  <%= link_to 'Back', restaurant_path(@restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
   </div>
 
 <br>

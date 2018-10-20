@@ -1,57 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-
-<div class="content-center">
-
 <% if 1 >= @restaurants.count  %>
 
-<div class="card text-center py-5">
-  <h5>
-    <font color="red">
-      <%= link_to 'You Need to Add At Least 2 Restaurants to Generate a Random Restaurant.', new_user_restaurant_path(@user), :style => "color: #f40404;" %>
-      </font>
-  </h5>
-</div>
+  <div class="card text-center py-5">
+    <h5>
+      <font color="red">
+        <%= link_to 'You Need to Add At Least 2 Restaurants to Generate a Random Restaurant.', new_user_restaurant_path(@user), :style => "color: #f40404;" %>
+        </font>
+    </h5>
+  </div>
 
 <% else %>
 
 <br>
-
-<h1 class="text-center"> Random Restaurant </h1>
-
 <br>
+
+<div class="float-right">
+
+    <%= link_to "My Profile", user_path(@user), :style=>'color:#291f41;' %>
+    >
+    <strong>
+    <u>
+      <%= link_to "Random Restaurant", selected_random_restaurant_path, :style=>'color:#291f41;' %>
+    </u>
+    </strong>
+</div>
+<br>
+
 
 <div class="card">
-  <div class="card-header text-center ">
-    You Got
+  <div class="container">
+    <br>
+    <br>
+    <h1 class="display-4"> Random Restaurant </h1>
+    <br>
+    <br>
   </div>
-  <div class="card-body text-center">
-    <h2 class="card-title"> <%= @selected_restaurant.title %> </h2>
-    <%= link_to 'Show', restaurant_path(@selected_restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
-  </div>
+</div>
+
+<br>
+<br>
+    <br>
+    <div class="card">
+      <div class="card-header text-center ">
+        <h2>
+        You Got
+        </h2>
+      </div>
+
+      <div class="card-body text-center">
+        <h2 class="card-title display-4">
+          <%= link_to "#{@selected_restaurant.title}", restaurant_path(@selected_restaurant), :style=>'color:#291f41;' %>
+        </h2>
+
+        <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-info btn-lg btn-block" %>
+
+      </div>
+      <br>
+      <div class="card-footer text-muted text-center">
+          Added <%= time_ago_in_words(@selected_restaurant.created_at) %> ago.
+      </div>
+    </div>
+
+
 
   <br>
-
-  <div class="card-footer text-muted text-center">
-      Added <%= time_ago_in_words(@selected_restaurant.created_at) %> ago.
-  </div>
-</div>
-
-
-<br>
-<br>
-  <div class="container card">
-    <br>
-    <%= button_to "Randomize", selected_random_restaurant_path, :method => :get, class:"btn btn-info btn-lg btn-block" %>
-    <br>
-  </div>
-
-
-</div>
+  <br>
 
 <% end %>
-
 <br>
-<%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
 
-</div>
+<%= link_to 'Back', root_path, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>

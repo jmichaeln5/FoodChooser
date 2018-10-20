@@ -1,29 +1,31 @@
 <div class="card">
+
+  <%= form_tag '/login' do %>
+
   <br>
+  <h1>Login</h1>
   <br>
-
-<h1 class="center">Login</h1>
-
-<br>
-
-<%= form_tag '/login' do %>
 
   <div class="form-group">
-    <%= text_field_tag :email, '', placeholder: "Email" %>
+    Email:
+    <%= text_field_tag :email, '', placeholder: "sample@example.com" %>
   </div>
 
   <div class="form-group">
+    Password:
     <%= password_field_tag :password, '', placeholder: "Password"%>
   </div>
 
-  <center class="submit">
+  <center class="submit ">
     <%= submit_tag "Submit" %>
   </center>
+  <br>
+</div>
 
-<% end %>
-<br>
-<br>
-<br>
+  <% end %>
 
+  <br>
+  <br>
+  <br>
 
 </div>

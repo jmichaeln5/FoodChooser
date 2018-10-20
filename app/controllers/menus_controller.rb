@@ -10,6 +10,8 @@ class MenusController < ApplicationController
   end
 
   def show
+    @restaurant = @menu.restaurant.id
+    
     @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
 
     @items = Item.where(menu_id: @menu ).paginate(page: params[:page]).order("created_at DESC")
@@ -31,7 +33,7 @@ class MenusController < ApplicationController
 
         respond_to do |format|
           if @menu.save
-            format.html { redirect_to menu_path(@menu), notice: 'Menu was successfully created.' }
+            format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
             format.json { render :show, status: :created, location: @menu }
           else
             format.html { render :new }
@@ -41,6 +43,8 @@ class MenusController < ApplicationController
       end
 
   def update
+    # @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = @menu.restaurant.id
 
     respond_to do |format|
       if @menu.update(menu_params)
@@ -54,9 +58,12 @@ class MenusController < ApplicationController
   end
 
   def destroy
+    @restaurant = @menu.restaurant
+    @user = current_user
+
     @menu.destroy
     respond_to do |format|
-      format.html { redirect_to user_restaurants_path(@user, @restaurant), notice: 'Menu was successfully destroyed.' }
+      format.html { redirect_to restaurant_menus_path(@restaurant), notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

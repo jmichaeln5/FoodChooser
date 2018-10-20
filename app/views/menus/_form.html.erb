@@ -1,4 +1,3 @@
-<%#= form_with(model: @menu, local: true) do |form| %>
 <%= form_with(model: [ @restaurant, @restaurant.menus.build ]) do |form| %>
 
   <% if @menu.errors.any? %>
@@ -20,7 +19,6 @@
 <div class="field">
     <%= form.hidden_field :restaurant_id, id: :restaurant_id, value: @restaurant.id %>
 </div>
-
 
 <!-- <div class="field">
   <%= " Restaurant ID" %>

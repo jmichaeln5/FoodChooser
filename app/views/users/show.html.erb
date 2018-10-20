@@ -1,78 +1,129 @@
-<!-- <h3> Users#Show | User Profile</h3> -->
-<!-- app/views/users/show -->
+<p id="notice"><%= notice %></p>
 
-<h3> Welcome <%= current_user.email %> </h3>
-<!-- <h4> You have <%#= @restaurants.count %> Restaurants  </h4> -->
-<hr>
+
+<br>
+<br>
+<br>
 
 <div class="card">
-  <div class="card-body">
-
-    <% if current_user.restaurants.count > 1 %>
-    <h4> You have <%= "#{@user.restaurants.count} Restaurants."%></h4>
-    <% end %>
-
+  <div class="container">
     <br>
-    <%= link_to "Restaurants",  user_restaurants_path(@user), class:"btn btn-primary btn-block"  %>
     <br>
-     <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
+    <h1 class="display-4"> Welcome <%= current_user.email %> </h1>
+    <br>
+    <br>
   </div>
 </div>
 
 <br>
 <br>
-
-
-<!-- <div class="btn-group">
-          <div class="card" style="width: 100%;">
-            <div class="card-header">
-              <h1>
-                <%= link_to "Restaurants",  user_restaurants_path(@user) %>
-              </h1>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">   <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
-</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-          </div>
-
-          <div class="card" style="width: 100%;">
-            <div class="card-header">
-              <h1>
-                <%= link_to "Restaurants",  user_restaurants_path(@user) %>
-              </h1>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-          </div>
-</div> -->
-
-
 <br>
 
-
-
-
-
-<!-- <div class="card">
+<div class="card">
   <div class="card-body">
-<%= link_to "Restaurants",  user_restaurants_path(@user) %>
-</div>
-</div>
-<br>
 
-<div class="btn-group">
-  <%= link_to "Restaurants",  user_restaurants_path(@user), class:"btn btn-primary btn-block" %>
-  <br>
+    <% if @user_restaurants.count != nil %>
+        <br>
+        <h2>Restaurants</h2>
 
-   <%= link_to "Restaurants",  user_restaurants_path(@user), class:"btn btn-success"   %>
+        <h4> You have <%= @user_restaurants.count %> Restaurants. </h4>
 
-   <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
+
+        <div class="container">
+          <hr>
+
+            <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-info btn-lg" %>
+
+        <hr>
+
+        <br>
+
+          <%= link_to 'Add Restaurant', new_user_restaurant_path(@user), class:"btn btn-success btn-block btn-lg", :style => "color: #f8f8f8;" %>
+
+        <br>
+
+          <div class="conatiner">
+          <% @user_restaurants.each do |restaurant| %>
+
+            <br>
+
+            <div class="card">
+              <div class="card-body">
+
+                <h5 class="card-title">
+                   <%= restaurant.title.capitalize %>
+                </h5>
+
+
+                <%= link_to 'View Restaurant', restaurant_path(restaurant), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+
+
+
+                <!-- Would be rad to put view menus here to lessen confusion -->
+                <!-- Would be rad to put view menus here to lessen confusion -->
+                <!-- Would be rad to put view menus here to lessen confusion -->
+
+                <!-- Button trigger modal -->
+                <!-- <div>
+                  <button type="button" class="btn  btn-success" data-toggle="modal" data-target="#exampleModal">
+                    More Details
+                  </button> -->
+
+                  <!-- Modal -->
+                  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+
+hello
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- Would be rad to put view menus here to lessen confusion -->
+
+                <!-- ending modal brah -->
+                <!-- ending modal brah -->
+                <!-- ending modal brah -->
+                <!-- ending modal brah -->
+
+
+              </div>  <!-- card body div end -->
+
+              <div class="card-footer text-muted text-center small">
+                  Added <%= time_ago_in_words(restaurant.created_at) %> ago.
+              </div>
+            </div>
+
+              <% end %>
+          </div>   <!-- end of container div right above loop -->
+
+        </div>
+
+
+    <% else %>
+
+      <%= link_to "View All Restaurants",  user_restaurants_path(@user), class:"btn btn-primary btn-block"  %>
+
+      <br>
+
+      <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-outline-primary" %>
+
+    <% end %>
+
+    <br>
+
+  </div>
 </div>
- -->
-<%#= render "restaurants/rendered" %>

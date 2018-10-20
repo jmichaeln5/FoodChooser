@@ -1,18 +1,54 @@
 <p id="notice"><%= notice %></p>
 
+<br>
+<br>
+<div class="float-right">
+
+    <%= link_to "My Profile",  user_path(@user), :style=>'color:#291f41;' %>
+    >
+    <%= link_to "#{@item.menu.restaurant.title.capitalize}", restaurant_path(@menu.restaurant.id), :style=>'color:#291f41;' %>
+    >
+    <%= link_to "#{@item.menu.title.capitalize} Menu", menu_path(@menu), :style=>'color:#291f41;' %>
+    >
+    <strong>
+    <u>
+        <%= link_to " #{@item.item_name.capitalize}", menu_path(@menu), :style=>'color:#291f41;' %>
+    </u>
+    </strong>
+</div>
+
+<br>
+
+
+
+
+
+
+
 <div class="card">
-  <div class="card-header text-center ">
-    Menu Item
+  <br>
+  <div class="container">
+  <br>
+
+  <h4><strong> Item: </strong> </h4>
+
+  <h1 class="display-4"> <%= "#{@item.item_name.capitalize}"%> </h1>
+  <%= link_to 'Edit Item', edit_item_path(@item), class:"btn btn-outline-secondary btn-sm" %>
+
+  <%= link_to 'Delete Item', @item , method: :delete, data: { confirm: 'Are you sure you would like to delete this item forever?' }, class:"btn btn-danger btn-sm", :style => "color: #f8f8f8;"  %>
+
+  <br>
+  <br>
+  <br>
   </div>
-  <div class="card-body text-center">
-    <h2 class="card-title"> <%= @item.item_name %> </h2>
-    <h5 class="card-text"> <%= @item.description%></h5>
-    <p class="card-text"> $<%= @item.price%>0</p>
-    <%= link_to 'Edit', edit_item_path(@item), class:"btn btn-secondary", :style => "color: #f8f8f8;" %>
-    <%= link_to 'Delete', @item, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger", :style => "color: #f8f8f8;"  %>
-  </div>
-  <div class="card-footer text-muted text-center">
-      Added <%= time_ago_in_words(@item.created_at) %> ago.
-  </div>
-  </div>
+</div>
+
+<br>
+
+
+
+<hr>
+
+<div class="text-center">
+<%= link_to 'Back', menu_path(@menu), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
 </div>

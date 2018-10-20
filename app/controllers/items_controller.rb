@@ -13,14 +13,13 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    # @items = Item.all.order("created_at DESC").limit(2)
     @items = Item.paginate(page: params[:page]).order("created_at DESC")
-    # Paginate pages control within model
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    @menu = @item.menu
   end
 
   # GET /items/new
@@ -69,10 +68,14 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @menu = Menu.find(params[:menu_id])
+
+    @user = current_user
+    @menu = @item.menu
+
+
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to menu_item_path(@menu), notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to menu_path(@menu), notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

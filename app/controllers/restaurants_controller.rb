@@ -12,6 +12,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
 
+    @restaurants = @user.restaurants
+    # @items
   end
 
   def new
@@ -52,10 +54,12 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @user = current_user
+    # @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
+    @menus = @restaurant.menus
 
     @restaurant.destroy
     respond_to do |format|
-      format.html { redirect_to user_restaurants_path(@user), notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to user_path(@user), notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
