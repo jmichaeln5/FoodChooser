@@ -1,6 +1,26 @@
-<h1>Editing Restaurant</h1>
+<p id="notice"><%= notice %></p>
 
+<div class="card">
+  <br>
+  <div class="container">
+    <br>
+    <h1 class="display-4"> Edit <%= @restaurant.title.capitalize %> </h1>
+    <br>
+    <br>
+  </div>
+</div>
+
+<br>
+
+<br>
 <%= render 'form', restaurant: @restaurant %>
 
-<%= link_to 'Show', @restaurant %> |
-<%= link_to 'Back', :back %>
+<br>
+
+<hr>
+
+<br>
+
+<div>
+  <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+</div>

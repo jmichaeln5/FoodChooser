@@ -6,7 +6,6 @@
 <br>
 <br>
 <div class="float-right">
-
     <%= link_to "My Profile", user_path(@user), :style=>'color:#291f41;' %>
     >
     <%= link_to "#{@menu.restaurant.title.capitalize}", restaurant_path(@menu.restaurant.id), :style=>'color:#291f41;' %>
@@ -44,16 +43,13 @@
 
 <div class="card container py-5">
 
-  <br>
-  <br>
-  <br>
   <h2> Items</h2>
   <h4> <%= "#{@menu.title.capitalize}"%> menu has <%= @items.count %> items.
   </h4>
 
   <hr>
 
-    <%= link_to "Add Item", new_menu_item_path( @menu), class:"btn btn-block btn-success", :style => "color: #f8f8f8;"  %>
+    <%= link_to "Add Item", new_menu_item_path( @menu), class:"btn btn-block btn-lg btn-success", :style => "color: #f8f8f8;"  %>
 
     <!-- Modal Begin -->
     <!-- Modal Begin -->

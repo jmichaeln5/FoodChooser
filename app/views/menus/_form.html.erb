@@ -13,9 +13,10 @@
   <% end %>
 
 
-<hr>
+<br>
 <br>
 
+<div class="card text-center py-5">
 <div class="field">
     <%= form.hidden_field :restaurant_id, id: :restaurant_id, value: @restaurant.id %>
 </div>
@@ -30,12 +31,14 @@
 
 <%= @menu.title%>
 <div class="field">
-  <%= form.label :title, 'Menu Title' %>
+  <strong><%= form.label :title, 'Menu Title' %>:</strong>
   <%= form.text_field :title, id: :menu_title %>
 </div>
 
+<br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit  class: 'btn btn-success' %>
   </div>
 <% end %>
+</div>

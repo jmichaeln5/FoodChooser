@@ -1,5 +1,3 @@
-<h1> Edit <%= @menu.title%> Menu </h1>
-
 <%= form_with(model: @menu, local: true) do |form| %>
 
   <% if @menu.errors.any? %>
@@ -14,17 +12,51 @@
     </div>
   <% end %>
 
+  <p id="notice"><%= notice %></p>
+
+  <div class="card">
+    <br>
+    <div class="container">
+      <br>
+      <h1 class="display-4"> Edit <%= @menu.title.capitalize %> Menu  </h1>
+      <br>
+      <br>
+    </div>
+  </div>
+
+  <br>
+
+  <br>
+
+
+<div class="card">
+  <br>
+  <br>
+
+  <div class="field">
+    <strong><%= form.label :title, 'Menu Title:' %> </strong>
+    <%= form.text_field :title, id: :menu_title %>
+
+    <br>
+    <br>
+
+      <div class="actions">
+        <%= form.submit  class: 'btn btn-sm btn-success' %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <br>
+  <br>
+</div>
+
+<br>
 
 <hr>
 <br>
 
-<div class="field">
-  <%= form.label :title, 'Menu Title' %>
-  <%= form.text_field :title, id: :menu_title %>
+<div>
+  <%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;" %>
 </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

@@ -15,19 +15,19 @@
 
 <div class="card text-center py-5">
     <div class="field">
-      <%= form.label :item_name %>
+      <strong> <%= form.label :item_name %>: </strong>
       <%= form.text_field :item_name, id: :item_item_name %>
     </div>
     <hr>
 
     <div class="field">
-      <%= form.label :price %>
+    <strong>  <%= form.label :price %>: </strong>
       <%= form.text_field :price, id: :item_price %>
     </div>
     <hr>
 
     <div class="field">
-      <%= form.label :description %>
+    <strong>  <%= form.label :description %>: </strong>
       <%= form.text_area :description, id: :item_description %>
     </div>
     <hr>
@@ -37,8 +37,4 @@
       <%= form.submit  class: 'btn btn-success' %>
     </div>
   <% end %>
-</div>
-
-<div class="text-center py-5">
-<%= link_to 'Back', menu_path(@menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
 </div>

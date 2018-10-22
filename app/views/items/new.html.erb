@@ -1,5 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-center">New Item</h1>
+<div class="card">
+  <br>
+  <div class="container">
+    <br>
+    <h1 class="display-4"> New Item </h1>
+    <br>
+    <br>
+  </div>
+</div>
+<br>
 
+<br>
 <%= render 'form', item: @item %>
+
+<br>
+<hr>
+<br>
+
+
+<div>
+  <%= link_to 'Back', menu_path(@menu), class:"btn btn-primary", :style => "color: #f8f8f8;" %>
+</div>
