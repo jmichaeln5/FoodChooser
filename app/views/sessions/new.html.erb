@@ -4,6 +4,11 @@
 
   <br>
   <h1>Login</h1>
+
+<div class="container">
+  <hr>
+</div>
+
   <br>
 
   <div class="form-group">
@@ -16,16 +21,19 @@
     <%= password_field_tag :password, '', placeholder: "Password"%>
   </div>
 
-  <center class="submit ">
-    <%= submit_tag "Submit" %>
-  </center>
   <br>
-</div>
 
+  <center class="submit ">
+    <%= submit_tag "Submit", class:"btn btn-success" %>
+  </center>
+
+  <br>
+
+  <small>
+    Don't have an account? <%= link_to "Click Here to Signup.", signup_path %>
+  </small>
   <% end %>
 
-  <br>
-  <br>
-  <br>
+<br>
 
 </div>

@@ -1,36 +1,75 @@
 <p id="notice"><%= notice %></p>
 
 <% if 1 >= @items.count  %>
-<div class="card text-center py-5">
-  <a href="/restaurants/new">
-      <h5>
-        <font color="red">
-          You Need to Add At Least 2 Items to Generate a Random Item.
+
+  <div class="card text-center py-5">
+    <h5>
+      <font color="red">
+        <%= link_to 'You Need to Add At Least 2 Items to Generate a Random Item.', new_user_item_path(@user), :style => "color: #f40404;" %>
         </font>
-      </h5>
-  </a>
-</div>
+    </h5>
+  </div>
 
 <% else %>
 
-<h1 class="text-center"> Random Item</h1>
-<div class="card">
-  <div class="card-header text-center ">
-    You Got
-  </div>
-  <div class="card-body text-center">
-    <h2 class="card-title"> <%= @selected_item.item_name %> </h2>
-    <p class="card-text"> <%= @selected_item.description%></p>
-    <%= link_to 'Show', item_path(@selected_item), class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+<br>
+<br>
 
-  </div>
-  <div class="card-footer text-muted text-center">
-      Added <%= time_ago_in_words(@selected_item.created_at) %> ago.
-  </div>
+<div class="float-right">
+
+  <%= link_to "My Profile", user_path(@user), :style=>'color:#291f41;' %>
+  >
+  <%= link_to "#{@item.menu.restaurant.title.capitalize}", user_path(@user), :style=>'color:#291f41;' %>
+  >
+  <%= link_to "#{@item.menu.title.capitalize} Menu", user_path(@user), :style=>'color:#291f41;' %>
+  >
+    <strong>
+    <u>
+      <%= link_to "Random Item", selected_random_item_path, :style=>'color:#291f41;' %>
+    </u>
+    </strong>
+</div>
+<br>
+
+
+<div class="card">
+  <div class="container">
+    <br>
+    <br>
+    <h1 class="display-4"> Random Item </h1>
+    <br>
+    <br>
   </div>
 </div>
 
-<% end %>
-
 <br>
-<%= link_to 'Back', :back, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>
+<br>
+    <br>
+    <div class="card">
+      <div class="card-header text-center ">
+        <h2>
+        You Got
+        </h2>
+      </div>
+
+      <div class="card-body text-center">
+        <h2 class="card-title display-4">
+          <%= link_to "#{@item.item_name}", item_path(@item), :style=>'color:#291f41;' %>
+        </h2>
+
+        <%= link_to 'Generate Random Item', selected_random_item_path, class:"btn btn-info btn-lg btn-block" %>
+
+      </div>
+      <br>
+      <div class="card-footer text-muted text-center">
+          Added <%= time_ago_in_words(@item.created_at) %> ago.
+      </div>
+    </div>
+
+  <br>
+  <br>
+
+<% end %>
+<br>
+
+<%= link_to 'Back', root_path, class:"btn btn-primary", :style => "color: #f8f8f8;"  %>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'pages#home'
-  get 'start' => 'start#index'
   get 'users/index'
 
   get '/login' => 'sessions#new'
