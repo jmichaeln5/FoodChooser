@@ -66,38 +66,14 @@
     <!--  -->
 
 <hr>
-    <!-- Button trigger modal -->
-    <div>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">
-      Generate Random Item
-    </button>
-</div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Coming Soon</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h3>Sorry, Feature Not Yet Available.</h3>
-            <p> ...In the mean time feel free to have us generate a random Restaurant for you, click the button below!</p>
+    <div class="container btn-group text-center">
 
-            <%= link_to 'Generate Random Restaurant', selected_random_restaurant_path, class:"btn btn-info btn-lg" %>
+      <%= link_to 'Generate Random Menu', '#', class:"btn btn-outline-info btn-lg" %>
 
+      <%= link_to 'Generate Random Menu Item', '#', class:"btn btn-info btn-lg" %>
 
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
     </div>
-<hr>
+    <hr>
     <!--  -->
     <!--  -->
     <!--  -->

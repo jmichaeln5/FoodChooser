@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :menus, only: [ :show, :edit, :update, :destroy]
 
   resources :menus do
-    resources :items, only: [:index, :new, :create, :random_item]
+    resources :items, only: [:index, :new, :create]
   end
   resources :items, only: [ :show, :edit, :update, :destroy]
 

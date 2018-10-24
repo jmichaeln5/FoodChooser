@@ -32,7 +32,7 @@
 <%= @menu.title%>
 <div class="field">
   <strong><%= form.label :title, 'Menu Title' %>:</strong>
-  <%= form.text_field :title, id: :menu_title %>
+  <%= form.text_field :title, id: :menu_title, placeholder: "Brunch, Dinner, Drink", :required => true %>
 </div>
 
 <br>

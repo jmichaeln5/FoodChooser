@@ -4,16 +4,12 @@ class MenusController < ApplicationController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-
     @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
-
   end
 
   def show
     @restaurant = @menu.restaurant.id
-
     @menus = Menu.where(restaurant_id: @restaurant ).paginate(page: params[:page]).order("created_at DESC")
-
     @items = Item.where(menu_id: @menu ).paginate(page: params[:page]).order("created_at DESC")
   end
 
