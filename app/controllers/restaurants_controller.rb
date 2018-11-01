@@ -1,9 +1,15 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [ :show, :edit, :update, :destroy]
+
+  def random_menu
+    @user = current_user
+  end
+
 
   def index
     @user = current_user
-    @restaurants = Restaurant.where(user_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
+    @user.restaurants
+    # @restaurants = Restaurant.where(user_id: current_user ).paginate(page: params[:page]).order("created_at DESC")
     #### Pagination found in model.rb file(control amount of @instances per page)
   end
 

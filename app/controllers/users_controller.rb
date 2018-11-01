@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @user_restaurants = @user.restaurants.order("created_at DESC")
+    @restaurant = @user.restaurants.build
   end
 
   def new

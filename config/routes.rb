@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'yelps/index'
+
   root 'pages#home'
   get 'users/index'
 
@@ -14,12 +16,16 @@ Rails.application.routes.draw do
   get '/selected/random_item'
   get '/selected/random_restaurant'
 
+
+
+  get '/restaurants/:id/random_menu' => 'restaurants#random_menu'
+
   resources :users do
     resources :restaurants
   end
 
   resources :restaurants do
-    resources :menus, only: [:index, :new, :create]
+    resources :menus, only: [ :index, :new, :create]
   end
   resources :menus, only: [ :show, :edit, :update, :destroy]
 

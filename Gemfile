@@ -7,6 +7,8 @@ end
 
 gem 'will_paginate', '~> 3.1.0'
 gem 'hirb'
+gem 'httparty', '~> 0.13.7'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
